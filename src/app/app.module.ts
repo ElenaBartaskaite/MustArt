@@ -8,6 +8,7 @@ import { AppComponent } from './app.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { CartComponent } from './cart/cart.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { SearchbarComponent } from './searchbar/searchbar.component';
 import { GalleryComponent } from './gallery/gallery.component';
 import { PageNotFoundModule } from './page-not-found/page-not-found.module';
 import { GalleryModule } from './gallery/gallery.module';
@@ -22,7 +23,8 @@ const appRoutes: Routes = [
   declarations: [
     AppComponent,
     NavbarComponent,
-    CartComponent
+    CartComponent,
+    SearchbarComponent
   ],
   imports: [
     RouterModule.forRoot(
