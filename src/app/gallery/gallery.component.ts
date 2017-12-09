@@ -6,7 +6,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./gallery.component.css']
 })
 export class GalleryComponent implements OnInit {
-
+  images = [
+    { "src": "http://via.placeholder.com/256x256", "alt": "First Image" },
+    { "src": "http://via.placeholder.com/256x256", "alt": "Second image" },
+    { "src": "http://via.placeholder.com/256x256", "alt": "Third image" },
+    { "src": "http://via.placeholder.com/256x256", "alt": "Fourth image" }
+  ];
+  
   constructor() { }
 
   ngOnInit() {
