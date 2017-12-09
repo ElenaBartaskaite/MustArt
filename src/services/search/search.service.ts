@@ -22,7 +22,10 @@ export class SearchService {
     // Display
     displayMode: DisplayModes = DisplayModes.Normal;
 
-    constructor() { }
+    constructor() {
+        this.sortMode = SortModes.Newest;
+        this.displayMode = DisplayModes.Normal;
+    }
 
     search() {
 
