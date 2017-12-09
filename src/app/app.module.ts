@@ -22,6 +22,7 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { PageNotFoundModule } from './page-not-found/page-not-found.module';
 
 import { ProfileComponent } from './profile/profile.component';
+import { ImageComponent } from './image/image.component';
 
 const appRoutes: Routes = [
   { path: '', redirectTo: 'gallery', pathMatch: 'full' },
@@ -30,6 +31,7 @@ const appRoutes: Routes = [
   { path: 'faq', component: FaqComponent },
   { path: 'gallery', component: GalleryComponent },
   { path: 'profile', component: ProfileComponent },
+  { path: 'image/:id', component: ImageComponent },
   { path: '**', component: PageNotFoundComponent }
 ];
 
@@ -39,7 +41,8 @@ const appRoutes: Routes = [
     CartComponent,
     AboutComponent,
     FaqComponent,
-    ProfileComponent
+    ProfileComponent,
+    ImageComponent
   ],
   imports: [
     RouterModule.forRoot(
