@@ -21,12 +21,15 @@ import { GalleryModule } from './gallery/gallery.module';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { PageNotFoundModule } from './page-not-found/page-not-found.module';
 
+import { ProfileComponent } from './profile/profile.component';
+
 const appRoutes: Routes = [
   { path: '', redirectTo: 'gallery', pathMatch: 'full' },
   { path: 'about', component: AboutComponent },
   { path: 'cart', component: CartComponent },
   { path: 'faq', component: FaqComponent },
   { path: 'gallery', component: GalleryComponent },
+  { path: 'profile', component: ProfileComponent },
   { path: '**', component: PageNotFoundComponent }
 ];
 
@@ -35,7 +38,8 @@ const appRoutes: Routes = [
     AppComponent,
     CartComponent,
     AboutComponent,
-    FaqComponent
+    FaqComponent,
+    ProfileComponent
   ],
   imports: [
     RouterModule.forRoot(
