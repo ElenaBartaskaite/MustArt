@@ -1,4 +1,4 @@
 export enum DisplayModes {
-    Normal,
-    Large
+    Normal = "Normal",
+    Large = "Large"
 }

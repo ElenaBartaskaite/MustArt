@@ -17,14 +17,12 @@ export class SearchService {
     dominantColors: Color[];
     fromDate: Date;
     toDate: Date;
-    resolution: List<string>;
+    resolutions: List<string>;
 
     // Display
     displayMode: DisplayModes = DisplayModes.Normal;
 
     constructor() {
-        this.sortMode = SortModes.Newest;
-        this.displayMode = DisplayModes.Normal;
     }
 
     search() {
