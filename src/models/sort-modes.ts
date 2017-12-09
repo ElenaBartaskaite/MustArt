@@ -1,5 +1,5 @@
 export enum SortModes {
-    Oldest,
-    Newest,
-    Relevant
+    Oldest = "Oldest",
+    Newest = "Newest",
+    Relevant = "Relevant"
 }

@@ -1,9 +1,19 @@
 <div class="container">
   <div class="row justify-content-center">
-    <p (click)='ChangeDisplayMode()'>DISPLAY MODE: {{searchService.displayMode}}</p>
+    <button (click)='ChangeDisplayMode()'>DISPLAY MODE: {{searchService.displayMode}}</button>
+    <div class="dropdown" ngbDropdown>
+      <button class="dropdown-toggle" id="sortModeDropdown" ngbDropdownToggle>
+        Sorting by: {{searchService.sortMode}}
+      </button>
+      <div class="dropdown-menu" aria-labelledby="sortModeDropdown" ngbDropdownMenu>
+        <a class="dropdown-item" (click)="Sort('Newest')">Newest</a>
+        <a class="dropdown-item" (click)="Sort('Oldest')">Oldest</a>
+        <a class="dropdown-item" (click)="Sort('Relevant')">Relevant</a>
+      </div>
+    </div>
     <div class="card-columns" [style.column-count]="ColumnCount">
       <div class="card" *ngFor="let image of images">
-        <img class="card-img-top" src='{{image.src}}' alt="Card image cap">
+        <img class="card-img-top" src='{{image.src}}' alt="{{image.alt}}">
         <div class="card-body">
           <h4 class="card-title">Card title that wraps to a new line</h4>
           <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a
