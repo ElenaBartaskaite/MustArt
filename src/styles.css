@@ -8,5 +8,6 @@ body, html {
 }
 
 body {
+    margin: auto;
     margin-top: 60px;
 }

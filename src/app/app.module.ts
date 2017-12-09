@@ -13,6 +13,8 @@ import { AboutComponent } from './about/about.component';
 
 import { CartComponent } from './cart/cart.component';
 
+import { FaqComponent } from './faq/faq.component';
+
 import { GalleryComponent } from './gallery/gallery.component';
 import { GalleryModule } from './gallery/gallery.module';
 
@@ -23,6 +25,7 @@ const appRoutes: Routes = [
   { path: '', redirectTo: 'gallery', pathMatch: 'full' },
   { path: 'about', component: AboutComponent },
   { path: 'cart', component: CartComponent },
+  { path: 'faq', component: FaqComponent },
   { path: 'gallery', component: GalleryComponent },
   { path: '**', component: PageNotFoundComponent }
 ];
@@ -31,7 +34,8 @@ const appRoutes: Routes = [
   declarations: [
     AppComponent,
     CartComponent,
-    AboutComponent
+    AboutComponent,
+    FaqComponent
   ],
   imports: [
     RouterModule.forRoot(
