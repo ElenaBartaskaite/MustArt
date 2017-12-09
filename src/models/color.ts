@@ -1,4 +1,4 @@
-import { ColorService } from '../services/utility/utility.service';
+import { ColorService } from '../services/color/color.service';
 
 export class Color {
     private r: number;
