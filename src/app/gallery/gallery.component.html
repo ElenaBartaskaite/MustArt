@@ -13,7 +13,9 @@
     </div>
     <div class="card-columns" [style.column-count]="ColumnCount">
       <div class="card" *ngFor="let image of images">
-        <img class="card-img-top" src='{{image.src}}' alt="{{image.alt}}">
+        <a class="nav-link" routerLink="/image/{{image.id}}">
+          <img class="card-img-top" src='{{image.src}}' alt="Card image cap">
+        </a>
         <div class="card-body">
           <h4 class="card-title">Card title that wraps to a new line</h4>
           <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a
