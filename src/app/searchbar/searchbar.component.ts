@@ -7,9 +7,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SearchbarComponent implements OnInit {
 
-  constructor() { }
+  rawKeywords = '';
+
+  constructor() {
+
+  }
 
   ngOnInit() {
+
+  }
+
+  Search() {
+
   }
 
 }

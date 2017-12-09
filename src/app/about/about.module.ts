@@ -1,17 +1,20 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { GalleryComponent } from './gallery.component';
+import { AboutComponent } from './about.component';
 
 @NgModule({
   imports: [
     CommonModule
   ],
   declarations: [
-    GalleryComponent
+    AboutComponent
   ],
   exports: [
-    GalleryComponent
+    AboutComponent
+  ],
+  bootstrap: [
+    AboutComponent
   ]
 })
-export class GalleryModule { }
+export class AboutModule { }

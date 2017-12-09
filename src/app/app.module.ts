@@ -5,24 +5,33 @@ import { RouterModule, Routes } from '@angular/router';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { AppComponent } from './app.component';
+
 import { NavbarModule } from './navbar/navbar.module';
-import { CartComponent } from './cart/cart.component';
-import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { SearchbarModule } from './searchbar/searchbar.module';
+
+import { AboutComponent } from './about/about.component';
+
+import { CartComponent } from './cart/cart.component';
+
 import { GalleryComponent } from './gallery/gallery.component';
-import { PageNotFoundModule } from './page-not-found/page-not-found.module';
 import { GalleryModule } from './gallery/gallery.module';
 
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { PageNotFoundModule } from './page-not-found/page-not-found.module';
+
 const appRoutes: Routes = [
-  { path: 'gallery', component: GalleryComponent },
+  { path: '', redirectTo: 'gallery', pathMatch: 'full' },
+  { path: 'about', component: AboutComponent },
   { path: 'cart', component: CartComponent },
+  { path: 'gallery', component: GalleryComponent },
   { path: '**', component: PageNotFoundComponent }
 ];
 
 @NgModule({
   declarations: [
     AppComponent,
-    CartComponent
+    CartComponent,
+    AboutComponent
   ],
   imports: [
     RouterModule.forRoot(

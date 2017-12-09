@@ -1,8 +1,8 @@
-<div class="col-lg-6">
+<div class="container-fluid">
   <div class="input-group">
-    <input type="text" class="form-control" placeholder="Search for..." aria-label="Search for...">
+    <input type="text" class="form-control" [(ngModel)]="rawKeywords" placeholder="type your keywords here" aria-label="Search for...">
     <span class="input-group-btn">
-      <button class="btn btn-secondary" type="button">Go!</button>
+      <button class="btn btn-secondary" type="button" (click)='Search()'>Search</button>
     </span>
   </div>
 </div>
