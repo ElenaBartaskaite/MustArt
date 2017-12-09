@@ -3,7 +3,7 @@
     <p (click)='ChangeDisplayMode()'>DISPLAY MODE: {{searchService.displayMode}}</p>
     <div class="card-columns" [style.column-count]="ColumnCount">
       <div class="card" *ngFor="let image of images">
-        <a class="nav-link" routerLink="/image/{{image.id}}" routerLinkActive="active">
+        <a class="nav-link" routerLink="/image/{{image.id}}">
           <img class="card-img-top" src='{{image.src}}' alt="Card image cap">
         </a>
         <div class="card-body">
