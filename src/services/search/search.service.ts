@@ -2,7 +2,8 @@ import { Injectable } from '@angular/core';
 import { Color } from '../../models/color';
 
 import { SortModes } from '../../models/sort-modes';
-import { Resolutions } from '../../models/resolutions';
+import { List } from '../../models/list';
+import { DisplayModes } from '../../models/display-modes';
 
 @Injectable()
 export class SearchService {
@@ -16,7 +17,10 @@ export class SearchService {
     dominantColors: Color[];
     fromDate: Date;
     toDate: Date;
-    resolution: Resolution;
+    resolution: List<string>;
+
+    // Display
+    displayMode: DisplayModes = DisplayModes.Normal;
 
     constructor() { }
 
