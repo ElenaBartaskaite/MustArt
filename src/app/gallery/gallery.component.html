@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row justify-content-center">
     <div class="card-columns">
-      <div class="card" *ngFor="let image of images">
+      <div class="card" [class.w-75]="searchService.displayMode.Normal" *ngFor="let image of images">
         <img class="card-img-top" src='{{image.src}}' alt="Card image cap">
         <div class="card-body">
           <h4 class="card-title">Card title that wraps to a new line</h4>
