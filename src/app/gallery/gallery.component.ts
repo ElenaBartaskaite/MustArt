@@ -62,6 +62,13 @@ export class GalleryComponent implements OnInit {
         return 0;
       });
     }
+    else if (sortMode == SortModes.Relevant.toString()) {
+      this.images.sort((i1, i2) => {
+        if (i1.relevance < i2.relevance) return -1;
+        if (i1.relevance > i2.relevance) return 1;
+        return 0;
+      });
+    }
   }
 
 }
