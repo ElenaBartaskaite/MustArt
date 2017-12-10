@@ -1,5 +1,9 @@
 <div class="container">
   <div class="row justify-content-center">
+    <div class="card">
+      <ng-datepicker id="fromDate" [(ngModel)]="searchService.fromDate"> </ng-datepicker>
+      <ng-datepicker id="toDate" [(ngModel)]="searchService.toDate"> </ng-datepicker>
+    </div>
     <button (click)='ChangeDisplayMode()'>DISPLAY MODE: {{searchService.displayMode}}</button>
     <div class="dropdown" ngbDropdown>
       <button class="dropdown-toggle" id="sortModeDropdown" ngbDropdownToggle>

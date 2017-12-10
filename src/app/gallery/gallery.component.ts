@@ -2,13 +2,13 @@ import { Component, OnInit } from '@angular/core';
 import { SearchService } from '../../services/search/search.service';
 
 import { DisplayModes } from '../../models/display-modes';
-import { NgbDropdownModule } from '@ng-bootstrap/ng-bootstrap/dropdown/dropdown.module';
+import { SortModes } from '../../models/sort-modes';
 
 @Component({
   selector: 'app-gallery',
   templateUrl: './gallery.component.html',
   styleUrls: ['./gallery.component.css'],
-  providers: [SearchService, NgbDropdownModule]
+  providers: [SearchService]
 })
 export class GalleryComponent implements OnInit {
   images = [
@@ -24,7 +24,7 @@ export class GalleryComponent implements OnInit {
   ngOnInit() {
   }
 
-  get ColumnCount() : number {
+  get ColumnCount(): number {
     if (this.searchService.displayMode == DisplayModes.Normal) {
       return 4;
     }
@@ -45,15 +45,22 @@ export class GalleryComponent implements OnInit {
   Sort(sortMode: string) {
     console.log("Starting sort");
     if (sortMode == this.searchService.sortMode.toString()) {
-
+      return;
     }
-    else if (sortMode != this.searchService.sortMode.toString()) {
-      console.log("Sorting by " + sortMode);
+    console.log("Sorting by " + sortMode);
+    if (sortMode == SortModes.Newest.toString()) {
       this.images.sort((i1, i2) => {
-        if(i1.alt < i2.alt) return -1;
-        if(i1.alt > i2.alt) return 1;
+        if (i1.uploadDate < i2.uploadDate) return -1;
+        if (i1.uploadDate > i2.uploadDate) return 1;
         return 0;
-    });
+      });
+    }
+    else if (sortMode == SortModes.Oldest.toString()) {
+      this.images.sort((i1, i2) => {
+        if (i1.uploadDate > i2.uploadDate) return -1;
+        if (i1.uploadDate < i2.uploadDate) return 1;
+        return 0;
+      });
     }
   }
 

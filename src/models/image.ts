@@ -9,3 +9,7 @@ export class Image {
     uploadDate: Date;
     tags: string[];
 }
+
+export class SearchImage extends Image {
+    relevance: number;
+}

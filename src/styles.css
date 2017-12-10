@@ -15,3 +15,7 @@ body {
 p {
     text-align: justify;
 }
+
+.ngx-datepicker-calendar-container {
+    z-index: 1000;
+}
