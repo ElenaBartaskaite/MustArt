@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { SearchService } from '../../services/search/search.service';
+import{ImageService}from '../../services/image/image.service';
 
 import { DisplayModes } from '../../models/display-modes';
 import { SortModes } from '../../models/sort-modes';
@@ -10,24 +11,21 @@ import { Color } from '../../models/color';
   selector: 'app-gallery',
   templateUrl: './gallery.component.html',
   styleUrls: ['./gallery.component.css'],
-  providers: [SearchService]
+  providers: [SearchService, ImageService]
 })
 export class GalleryComponent implements OnInit {
-  images: SearchImage[] = [
-    { "id": "1", "name": "name1", "description": "name1", "matchingColors": [new Color(0,0,0)], "dominantColor": new Color(0,0,0), "uploadDate": new Date(2017, 1, 1), "tags": ["a", "b"], "relevance": 2},
-    { "id": "2", "name": "name2", "description": "name1", "matchingColors": [new Color(0,0,0)], "dominantColor": new Color(0,0,0), "uploadDate": new Date(2017, 1, 3), "tags": ["a", "b"], "relevance": 1},
-    { "id": "3", "name": "name3", "description": "name1", "matchingColors": [new Color(0,0,0)], "dominantColor": new Color(0,0,0), "uploadDate": new Date(2017, 1, 2), "tags": ["a", "b"], "relevance": 0},
-    { "id": "4", "name": "name4", "description": "name1", "matchingColors": [new Color(0,0,0)], "dominantColor": new Color(0,0,0), "uploadDate": new Date(2017, 1, 4), "tags": ["a", "b"], "relevance": 1},
-    { "id": "5", "name": "name5", "description": "name1", "matchingColors": [new Color(0,0,0)], "dominantColor": new Color(0,0,0), "uploadDate": new Date(2017, 1, 1), "tags": ["a", "b"], "relevance": 0},
-    { "id": "5", "name": "name6", "description": "name1", "matchingColors": [new Color(0,0,0)], "dominantColor": new Color(0,0,0), "uploadDate": new Date(2017, 1, 2), "tags": ["a", "b"], "relevance": 3},
-  ];
+  images: SearchImage[];
+  
 
-  constructor(private searchService: SearchService) {
+  constructor(private searchService: SearchService, private imageService: ImageService) {
   }
 
   ngOnInit() {
+    this.getImages();
   }
-
+  getImages(): void {
+    this.images = this.imageService.getImages();
+  }
   get ColumnCount(): number {
     if (this.searchService.displayMode == DisplayModes.Normal) {
       return 4;
