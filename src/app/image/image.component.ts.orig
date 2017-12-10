@@ -1,0 +1,36 @@
+import { Component, OnInit } from '@angular/core';
+
+import { Image, SearchImage } from '../../models/image';
+import{ImageService}from '../../services/image/image.service';
+
+import { ActivatedRoute } from '@angular/router';
+import 'rxjs/add/operator/filter';
+
+@Component({
+  selector: 'app-image',
+  templateUrl: './image.component.html',
+<<<<<<< HEAD
+  styleUrls: ['./image.component.css'],
+  providers: [ImageService]
+=======
+  styleUrls: ['./image.component.scss']
+>>>>>>> 66a32ea050a155457f5be60752783e47dd4c2128
+})
+export class ImageComponent implements OnInit {
+  image: SearchImage;
+  id: string;
+  constructor(private imageService: ImageService, private route: ActivatedRoute) { }
+
+  ngOnInit() {
+    this.route.queryParams
+    .filter(params => params.image)
+    .subscribe(params => {
+
+      this.id = params.image;
+    });
+    this.getImages();
+  }
+  getImages(): void {
+    this.image = this.imageService.getImageById(this.id);
+  }
+}

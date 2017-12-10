@@ -9,7 +9,7 @@ import 'rxjs/add/operator/filter';
 @Component({
   selector: 'app-image',
   templateUrl: './image.component.html',
-  styleUrls: ['./image.component.css'],
+  styleUrls: ['./image.component.scss']
   providers: [ImageService]
 })
 export class ImageComponent implements OnInit {

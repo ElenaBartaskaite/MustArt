@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule, Routes } from '@angular/router';
 import { NgDatepickerModule } from 'ng2-datepicker';
-
+import { NgxMasonryModule } from 'ngx-masonry';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { GalleryComponent } from './gallery.component';
 
@@ -13,7 +13,8 @@ import { GalleryComponent } from './gallery.component';
     CommonModule,
     RouterModule,
     NgbModule,
-    NgDatepickerModule
+    NgDatepickerModule,
+    NgxMasonryModule
   ],
   declarations: [
     GalleryComponent

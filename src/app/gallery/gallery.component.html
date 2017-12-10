@@ -1,9 +1,7 @@
-<div class="container">
-  <div class="row justify-content-center">
-    <div class="card">
-      <ng-datepicker id="fromDate" [(ngModel)]="searchService.fromDate"> </ng-datepicker>
-      <ng-datepicker id="toDate" [(ngModel)]="searchService.toDate"> </ng-datepicker>
-    </div>
+<div class="container justify-content-center">
+  <div class="row">
+    <ng-datepicker id="fromDate" [(ngModel)]="searchService.fromDate"> </ng-datepicker>
+    <ng-datepicker id="toDate" [(ngModel)]="searchService.toDate"> </ng-datepicker>
     <button (click)='ChangeDisplayMode()'>DISPLAY MODE: {{searchService.displayMode}}</button>
     <div class="dropdown" ngbDropdown>
       <button class="dropdown-toggle" id="sortModeDropdown" ngbDropdownToggle>
@@ -15,17 +13,16 @@
         <a class="dropdown-item" (click)="Sort('Relevant')">Relevant</a>
       </div>
     </div>
-    <div class="card-columns" [style.column-count]="ColumnCount">
-      <div class="card" *ngFor="let image of images">
-        <a class="nav-link" routerLink="/image/{{image.id}}">
-          <img class="card-img-top" src='assets/images/{{image.id}}.png' alt="{{image.name}}">
-        </a>
-        <div class="card-body">
-          <h4 class="card-title">Card title that wraps to a new line</h4>
-          <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a
-            little bit longer.</p>
-        </div>
-      </div>
-    </div>
   </div>
+  <ngx-masonry [useImagesLoaded]="true" [options]="{ fitWidth: true }">
+    <ngx-masonry-item class="masonry-item card image-card" *ngFor="let image of images">
+      <a class="nav-link image-card-link" routerLink="/image/{{image.id}}">
+        <img class="card-img-top" src='assets/images/{{image.id}}.png' alt="{{image.name}}">
+      </a>
+      <div class="card-body image-card-body">
+        <h4 class="card-title image-card-title">{{image.name}}</h4>
+        <a class="badge badge-secondary image-card-tag" *ngFor="let tag of image.tags" href="gallery?keywords={{tag}}">{{tag}}</a>
+      </div>
+    </ngx-masonry-item>
+  </ngx-masonry>
 </div>

@@ -1,0 +1,21 @@
+/* You can add global styles to this file, and also import other style files */
+
+@import "~bootstrap/dist/css/bootstrap.css";
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+
+body, html {
+    font-family: 'Roboto';
+}
+
+body {
+    margin: auto;
+    margin-top: 60px;
+}
+
+p {
+    text-align: justify;
+}
+
+.ngx-datepicker-calendar-container {
+    z-index: 1000;
+}

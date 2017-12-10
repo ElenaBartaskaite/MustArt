@@ -1,0 +1,37 @@
+@import 
+'~bootstrap/scss/functions',
+'~bootstrap/scss/variables',
+'~bootstrap/scss/mixins',
+'~bootstrap/scss/print',
+'~bootstrap/scss/reboot',
+'~bootstrap/scss/type',
+'~bootstrap/scss/badge';
+
+.image-card {
+    width: 150px;
+}
+
+.image-card .image-card-body {
+    padding: 4px;
+}
+
+.image-card .image-card-link {
+    padding: 0px;
+}
+
+.image-card .image-card-tag {
+    margin: 0.1em;
+}
+
+.image-card .image-card-title {
+    margin-bottom: 0.1em;
+}
+
+/*.card-columns {
+    @include media-breakpoint-only(md) {
+        column-count: 2 !important;
+    }
+    @include media-breakpoint-down(sm) {
+        column-count: 1 !important;
+    }
+}*/
