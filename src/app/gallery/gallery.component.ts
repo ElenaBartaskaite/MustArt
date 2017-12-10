@@ -3,6 +3,8 @@ import { SearchService } from '../../services/search/search.service';
 
 import { DisplayModes } from '../../models/display-modes';
 import { SortModes } from '../../models/sort-modes';
+import { Image, SearchImage } from '../../models/image';
+import { Color } from '../../models/color';
 
 @Component({
   selector: 'app-gallery',
@@ -11,11 +13,13 @@ import { SortModes } from '../../models/sort-modes';
   providers: [SearchService]
 })
 export class GalleryComponent implements OnInit {
-  images = [
-    { "src": "http://via.placeholder.com/256x256/f0f", "alt": "First Image" },
-    { "src": "http://via.placeholder.com/256x256/f00", "alt": "Second image" },
-    { "src": "http://via.placeholder.com/256x256/0ff", "alt": "Third image" },
-    { "src": "http://via.placeholder.com/256x256/ff0", "alt": "Fourth image" }
+  images: SearchImage[] = [
+    { "id": "1", "name": "name1", "description": "name1", "matchingColors": [new Color(0,0,0)], "dominantColor": new Color(0,0,0), "uploadDate": new Date(2017, 1, 1), "tags": ["a", "b"], "relevance": 2},
+    { "id": "2", "name": "name2", "description": "name1", "matchingColors": [new Color(0,0,0)], "dominantColor": new Color(0,0,0), "uploadDate": new Date(2017, 1, 3), "tags": ["a", "b"], "relevance": 1},
+    { "id": "3", "name": "name3", "description": "name1", "matchingColors": [new Color(0,0,0)], "dominantColor": new Color(0,0,0), "uploadDate": new Date(2017, 1, 2), "tags": ["a", "b"], "relevance": 0},
+    { "id": "4", "name": "name4", "description": "name1", "matchingColors": [new Color(0,0,0)], "dominantColor": new Color(0,0,0), "uploadDate": new Date(2017, 1, 4), "tags": ["a", "b"], "relevance": 1},
+    { "id": "5", "name": "name5", "description": "name1", "matchingColors": [new Color(0,0,0)], "dominantColor": new Color(0,0,0), "uploadDate": new Date(2017, 1, 1), "tags": ["a", "b"], "relevance": 0},
+    { "id": "5", "name": "name6", "description": "name1", "matchingColors": [new Color(0,0,0)], "dominantColor": new Color(0,0,0), "uploadDate": new Date(2017, 1, 2), "tags": ["a", "b"], "relevance": 3},
   ];
 
   constructor(private searchService: SearchService) {
