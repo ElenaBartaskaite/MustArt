@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import 'rxjs/add/operator/filter';
 import { SearchService } from '../../services/search/search.service';
-import{ImageService}from '../../services/image/image.service';
+import { ImageService } from '../../services/image/image.service';
 
 import { DisplayModes } from '../../models/display-modes';
 import { SortModes } from '../../models/sort-modes';
@@ -15,16 +17,20 @@ import { Router } from '@angular/router';
   providers: [SearchService, ImageService]
 })
 export class GalleryComponent implements OnInit {
-  images: SearchImage[]; 
-  constructor(private searchService: SearchService, private router: Router, private imageService: ImageService) {
+  images: SearchImage[];
+  constructor(private searchService: SearchService, private activatedRoute: ActivatedRoute, private router: Router, private imageService: ImageService) {
   }
 
   ngOnInit() {
     this.getImages();
+    this.searchService.Search();
+    console.log(this.activatedRoute.queryParams);
   }
+
   getImages(): void {
     this.images = this.imageService.getImages();
   }
+
   get ColumnCount(): number {
     if (this.searchService.displayMode == DisplayModes.Normal) {
       return 4;
@@ -32,6 +38,10 @@ export class GalleryComponent implements OnInit {
     else if (this.searchService.displayMode == DisplayModes.Large) {
       return 2;
     }
+  }
+
+  GoToImage(id: string) {
+    this.router.navigate(['/image'], { queryParams: { id: id}, queryParamsHandling: 'merge' });
   }
 
   ChangeDisplayMode() {
@@ -73,7 +83,6 @@ export class GalleryComponent implements OnInit {
         return 0;
       });
     }
-    this.router.navigate(['/gallery'], { queryParams: { sort: sortMode.toString()}, queryParamsHandling: 'merge' });
   }
 
 }

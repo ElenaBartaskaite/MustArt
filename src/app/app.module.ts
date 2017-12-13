@@ -32,6 +32,7 @@ const appRoutes: Routes = [
   { path: 'gallery', component: GalleryComponent },
   { path: 'profile', component: ProfileComponent },
   { path: 'image/:id', component: ImageComponent },
+  { path: 'image', component: ImageComponent },
   { path: '**', component: PageNotFoundComponent }
 ];
 

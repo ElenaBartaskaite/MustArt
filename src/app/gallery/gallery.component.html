@@ -16,7 +16,7 @@
   </div>
   <ngx-masonry [useImagesLoaded]="true" [options]="{ fitWidth: true }">
     <ngx-masonry-item class="masonry-item card image-card" *ngFor="let image of images">
-      <a class="nav-link image-card-link" routerLink="/image/{{image.id}}">
+      <a class="nav-link image-card-link" routerLink="/image" [queryParams]="{id: image.id}">
         <img class="card-img-top" src='assets/images/{{image.id}}.png' alt="{{image.name}}">
       </a>
       <div class="card-body image-card-body">

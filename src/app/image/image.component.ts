@@ -9,7 +9,7 @@ import 'rxjs/add/operator/filter';
 @Component({
   selector: 'app-image',
   templateUrl: './image.component.html',
-  styleUrls: ['./image.component.scss']
+  styleUrls: ['./image.component.scss'],
   providers: [ImageService]
 })
 export class ImageComponent implements OnInit {
@@ -18,15 +18,16 @@ export class ImageComponent implements OnInit {
   constructor(private imageService: ImageService, private route: ActivatedRoute) { }
 
   ngOnInit() {
-    this.route.queryParams
-    .filter(params => params.image)
-    .subscribe(params => {
-
-      this.id = params.image;
-    });
-    this.getImages();
+    this.GetImage();
   }
-  getImages(): void {
-    this.image = this.imageService.getImageById(this.id);
+
+  GetImage(): void {
+    this.route.queryParams
+    .filter(params => params.id)
+    .subscribe(params => {
+      console.log(params); // {order: "popular"}
+
+      return this.image = this.imageService.getImageById(params.id);
+    });
   }
 }
