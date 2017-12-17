@@ -31,9 +31,9 @@
 </div>
 <ul class="nav nav-tabs">
   <li class="nav-item">
-    <a class="nav-link [class.active]=''" href="">Reviews</a>
+    <a class="nav-link" [class.active]='activeTab=="reviews"' (click)='changeActiveTab("reviews")'>Reviews</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" href="#">Questions</a>
+    <a class="nav-link" [class.active]='activeTab=="questions"'(click)='changeActiveTab("questions")'>Questions</a>
   </li>
 </ul>
