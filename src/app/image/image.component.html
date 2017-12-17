@@ -1,11 +1,39 @@
 <div class="container">
   <div class="row">
-    <div class="col-5">
-      <img  src='assets/images/{{image.id}}.png' alt="{{image.name}}">
+    <div class="col-3">
+      <img src='assets/images/{{image.id}}.png' alt="{{image.name}}">
     </div>
-    <div class="col">
+    <div class="col-3">
+      <p>{{image.name}}</p>
+      <p>{{image.description}}</p>
+      <a class="badge badge-secondary image-card-tag" *ngFor="let tag of image.tags" href="gallery?keywords={{tag}}">{{tag}}</a>
     </div>
+
     <div class="col">
+      <p>Order:</p>
+      <div class="row">
+        <div class="col-2">
+          <p>Print:</p>
+        </div>
+        <div class="col">
+          <select class="form-control">
+            <option>50 x 30 cm</option>
+            <option>75 x 40 cm</option>
+          </select>
+        </div>
+        <div class="col-2">price</div>
+        <div class="col">
+          <button>Add to cart</button>
+        </div>
+      </div>
     </div>
   </div>
 </div>
+<ul class="nav nav-tabs">
+  <li class="nav-item">
+    <a class="nav-link [class.active]=''" href="">Reviews</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="#">Questions</a>
+  </li>
+</ul>

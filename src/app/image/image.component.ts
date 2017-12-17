@@ -24,9 +24,10 @@ export class ImageComponent implements OnInit {
     this.route.queryParams
     .filter(params => params.id)
     .subscribe(params => {
-      console.log(params); // {order: "popular"}
+      console.log(params); 
 
       return this.image = this.imageService.getImageById(params.id);
     });
   }
+  
 }
