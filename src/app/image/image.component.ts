@@ -19,15 +19,16 @@ export class ImageComponent implements OnInit {
 
   ngOnInit() {
     this.GetImage();
+    console.log(this.image.prices.print);
   }
-
   GetImage(): void {
     this.route.queryParams
     .filter(params => params.id)
     .subscribe(params => {
-      console.log(params); // {order: "popular"}
+      console.log(params); 
 
       return this.image = this.imageService.getImageById(params.id);
     });
   }
+  
 }
