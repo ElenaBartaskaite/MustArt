@@ -27,13 +27,7 @@ export class GalleryComponent implements OnInit {
     private imageService: ImageService,
     private routingService: RoutingService
   ) {
-    this.searchService.Navigate(
-      {
-        sort: this.routingService.getParam('sort'),
-        tags: this.routingService.getParam('tags'),
-        display: this.routingService.getParam('display')
-      }
-    );
+    this.searchService.Navigate();
   }
 
   ngOnInit() {

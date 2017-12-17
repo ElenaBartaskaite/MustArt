@@ -93,7 +93,7 @@ export class SearchService {
         return this.router.navigate(['/gallery'], {
             queryParams: {
                 sort: queryParams.sort,
-                tags: queryParams.tags
+                tags: queryParams.tags.join(',');
             },
             queryParamsHandling: ""
         });
