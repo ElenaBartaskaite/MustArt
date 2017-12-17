@@ -20,7 +20,6 @@ export class ImageComponent implements OnInit {
   ngOnInit() {
     this.GetImage();
   }
-
   GetImage(): void {
     this.route.queryParams
     .filter(params => params.id)
