@@ -15,15 +15,11 @@ import 'rxjs/add/operator/filter';
 export class ImageComponent implements OnInit {
   image: SearchImage;
   id: string;
-  activeTab: string='reviews';
   constructor(private imageService: ImageService, private route: ActivatedRoute) { }
 
   ngOnInit() {
     this.GetImage();
-  }
-  changeActiveTab(activeTab)
-  {
-    this.activeTab=activeTab;
+    console.log(this.image.prices.print);
   }
   GetImage(): void {
     this.route.queryParams
