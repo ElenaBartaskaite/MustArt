@@ -24,6 +24,9 @@ import { PageNotFoundModule } from './page-not-found/page-not-found.module';
 import { ProfileComponent } from './profile/profile.component';
 import { ImageComponent } from './image/image.component';
 
+import { SearchService } from '../services/search/search.service';
+import { ImageService } from '../services/image/image.service';
+
 const appRoutes: Routes = [
   { path: '', redirectTo: 'gallery', pathMatch: 'full' },
   { path: 'about', component: AboutComponent },
@@ -48,7 +51,7 @@ const appRoutes: Routes = [
   imports: [
     RouterModule.forRoot(
       appRoutes,
-      { enableTracing: true } // <-- debugging purposes only
+      { enableTracing: false } // <-- debugging purposes only
     ),
     BrowserModule,
     NgbModule.forRoot(),
@@ -57,7 +60,12 @@ const appRoutes: Routes = [
     NavbarModule,
     SearchbarModule
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  providers: [
+    ImageService,
+    SearchService
+  ],
+  bootstrap: [
+    AppComponent
+  ]
 })
 export class AppModule { }
