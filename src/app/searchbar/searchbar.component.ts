@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { SearchService } from '../../services/search/search.service';
 
 @Component({
   selector: 'app-searchbar',
@@ -9,7 +10,7 @@ export class SearchbarComponent implements OnInit {
 
   rawKeywords = '';
 
-  constructor() {
+  constructor(public searchService: SearchService) {
 
   }
 
@@ -17,8 +18,14 @@ export class SearchbarComponent implements OnInit {
 
   }
 
+  //#FIXME USE ME PLS 
   Search() {
-
+    var re = /([^a-zA-z0-9\s])+/g;
+    console.log(this.rawKeywords);
+    SearchService.tags = this.rawKeywords.replace(re, ' ').split(' ');
+    console.log(this.rawKeywords.replace(re, ' '));
+    console.log(SearchService.tags);
+    this.searchService.Navigate({tags: SearchService.tags, sort: SearchService.sortMode});
   }
 
 }

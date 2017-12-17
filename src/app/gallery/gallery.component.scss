@@ -7,8 +7,27 @@
 '~bootstrap/scss/type',
 '~bootstrap/scss/badge';
 
+.col-filter-label-left {
+    padding-left: 0px;
+}
+
+.col-filter-input-left {
+    padding-left: 0px;
+    padding-right: 0px;
+}
+
+.col-filter-label-right {
+    padding-right: 0px;
+}
+
+.col-filter-input-right {
+    padding-left: 0px;
+    padding-right: 0px;
+}
+
 .image-card {
     width: 150px;
+    padding: 0px;
 }
 
 .image-card .image-card-body {
@@ -27,11 +46,7 @@
     margin-bottom: 0.1em;
 }
 
-/*.card-columns {
-    @include media-breakpoint-only(md) {
-        column-count: 2 !important;
-    }
-    @include media-breakpoint-down(sm) {
-        column-count: 1 !important;
-    }
-}*/
+.row {
+    margin-bottom: 5px;
+    margin-top: 5px;
+}
