@@ -3,10 +3,10 @@
     <div class="form-inline">
       <div class="form-group">
         <div class="col-auto col-filter-label">
-          <label class="mr-sm-2 align-middle " for="fromDate">From:</label>
+          <div class="mr-sm-2 align-middle " for="fromDate">From:</div>
         </div>
         <div class="col-auto col-filter-input-left">
-          <ng-datepicker id="fromDate" [(ngModel)]="ss.fromDate"> </ng-datepicker>
+          <ng-datepicker id="fromDate" (ngModelChange)="ChangeFromDate($event)" [(ngModel)]="fromDate"> </ng-datepicker>
         </div>
       </div>
       <div class="form-group">
@@ -14,7 +14,23 @@
           <label class="mr-sm-2 align-middle" for="toDate">To:</label>
         </div>
         <div class="col-auto col-filter-input-left">
-          <ng-datepicker id="toDate" [(ngModel)]="ss.toDate"> </ng-datepicker>
+          <ng-datepicker id="toDate" (ngModelChange)="ChangeToDate($event)" [(ngModel)]="toDate"> </ng-datepicker>
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="col-auto col-filter-label">
+          <label class="mr-sm-2 align-middle">Image color:</label>
+          <input style="color: transparent" class="color-picker-box" (colorPickerSelect)="ChangeDominantColor($event)" [(ngModel)]="ss.dominantColor"
+            [(colorPicker)]="color1" [style.background]="color1" [cpPosition]="'bottom'" [cpPositionOffset]="'50%'" [cpPositionRelativeToArrow]="true"
+            [cpOKButton]="'true'" />
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="col-auto col-filter-label">
+          <label class="mr-sm-2 align-middle">Matching color:</label>
+          <input style="color: transparent" class="color-picker-box" (colorPickerSelect)="ChangeMatchingColor($event)" [(ngModel)]="ss.matchingColor"
+            [(colorPicker)]="color2" [style.background]="color2" [cpPosition]="'bottom'" [cpPositionOffset]="'50%'" [cpPositionRelativeToArrow]="true"
+            [cpOKButton]="'true'" />
         </div>
       </div>
     </div>
@@ -23,7 +39,13 @@
     <div class="col col-filter-label align-middle">
       <div class="form-inline" style="height:100%;">
         <div class="form-group">
-          <div class="align-middle no-margin align-middle">We've found {{ss.searchImages.length}} results</div>
+          <div class="align-middle no-margin align-middle" *ngIf="ss.tags != ''">
+            We've found {{ss.searchImages.length}} results for
+            <a class="badge badge-secondary text-white image-card-tag" *ngFor="let tag of ss.tags" (click)="GoToTag(tag)">{{tag}}</a>
+          </div>
+          <div class="align-middle no-margin align-middle" *ngIf="ss.tags == ''">
+            There are {{ss.searchImages.length}} images in our gallery
+          </div>
         </div>
       </div>
     </div>
@@ -58,16 +80,16 @@
     </div>
   </div>
   <div class="row justify-content-center" *ngIf="ss.searchImages.length > 0">
-    <div class="card image-card" [class.col-sm-3]="ss.displayMode.toString()=='Normal'" [class.col-sm-4]="ss.displayMode.toString()=='Large'"
-      *ngFor="let image of ss.searchImages">
-      <a class="nav-link image-card-link" routerLink="/image" [queryParams]="{id: image.id}">
-        <img class="card-img-top" src='assets/images/{{image.id}}.png' alt="{{image.name}}">
-      </a>
-      <div class="card-body image-card-body">
-        <h4 class="card-title image-card-title">{{image.name}}</h4>
-        <a class="badge badge-secondary image-card-tag" *ngFor="let tag of image.tags" href="gallery?tags={{tag}}">{{tag}}</a>
+      <div class="card image-card" [class.col-sm-3]="ss.displayMode.toString()=='Normal'" [class.col-sm-4]="ss.displayMode.toString()=='Large'"
+        *ngFor="let image of ss.searchImages">
+        <a class="nav-link image-card-link" routerLink="/image" [queryParams]="{id: image.id}">
+          <img class="card-img-top" src='assets/images/{{image.id}}.png' alt="{{image.name}}">
+        </a>
+        <div class="card-body image-card-body">
+          <h4 class="card-title image-card-title">{{image.name}}</h4>
+          <a class="badge badge-secondary text-white image-card-tag" *ngFor="let tag of image.tags" (click)="GoToTag(tag)">{{tag}}</a>
+        </div>
       </div>
-    </div>
   </div>
   <div class="row" *ngIf="ss.searchImages.length < 1">
     <div class="col-md-12 justify-content-center totally-centered">
@@ -76,13 +98,13 @@
       <h2>
         It seems there's nothing here...</h2>
       <div class="error-details">
-        No results were found for your search query, try the following:
+        No results were found for your search query, but we got you covered:
       </div>
       <div class="error-actions">
-        <a href="/" class="btn btn-warning btn-lg text-warning">
+        <a href="/" class="btn btn-warning btn-lg text-dark">
           <span class="glyphicon glyphicon-home"></span>
           Take me home </a>
-        <a href="http://www.jquery2dotnet.com" class="btn btn-warning btn-lg text-warning">
+        <a href="http://www.jquery2dotnet.com" class="btn btn-warning btn-lg text-dark">
           <span class="glyphicon glyphicon-envelope"></span> Popular tags </a>
       </div>
     </div>

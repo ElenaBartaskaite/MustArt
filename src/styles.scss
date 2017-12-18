@@ -2,10 +2,15 @@
 
 @import "~bootstrap/dist/css/bootstrap.css";
 @import url('https://fonts.googleapis.com/css?family=Roboto');
-
-.main {
-    padding-top: 48px !important;
-}
+@import 
+'~bootstrap/scss/functions',
+'~bootstrap/scss/variables',
+'~bootstrap/scss/mixins',
+'~bootstrap/scss/print',
+'~bootstrap/scss/reboot',
+'~bootstrap/scss/type',
+'~bootstrap/scss/badge',
+'~bootstrap/scss/buttons';
 
 app-searchbar {
     margin-top: -4px;
@@ -13,6 +18,46 @@ app-searchbar {
     position: fixed;
     width: 100%;
     z-index: 500;
+}
+
+app-faq .card {
+    background-color: $light;
+    color: $dark;
+}
+
+.main {
+    padding-top: 48px !important;
+}
+
+a {
+    color:$warning;
+}
+
+a, .color-picker-box{
+    cursor:pointer;
+}
+
+.color-picker {
+    .hex-text, .type-policy {
+        display:none !important;
+    }
+}
+
+.main-calendar-days {
+    .is-selected {
+        background-color: $warning !important;
+    }
+}
+
+.color-picker-box {
+    width: 30px;
+}
+
+.cp-ok-button-class {
+    @extend .btn;
+    @extend .btn-sm;
+    @extend .btn-warning;
+    width: 100%;
 }
 
 body, html {

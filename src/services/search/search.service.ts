@@ -19,8 +19,8 @@ export class SearchService {
 
     // Filtering
     static tags: string[] = [''];
-    static matchingColors: Color[] = [];
-    static dominantColors: Color[] = [];
+    static matchingColor: Color;
+    static dominantColor: Color;
     static fromDate: Date = new Date(2017, 1, 1);
     static toDate: Date = new Date();
     static resolutions: List<string> = new List<string>();
@@ -30,12 +30,15 @@ export class SearchService {
 
     static searchImages: SearchImage[] = [];
 
+    get Tags() {return SearchService.tags;}
+
     constructor(
         private imageService: ImageService,
         private router: Router,
         private routingService: RoutingService
     ) {
         SearchService.searchImages = this.imageService.getImages();
+        SearchService.tags = [''];
     }
 
     defaultQueryParams = {
@@ -47,6 +50,7 @@ export class SearchService {
     Search() {
         console.log("Searching...");
         console.log(SearchService.tags);
+        console.log(SearchService.fromDate + ' ' + SearchService.toDate);
         SearchService.searchImages = this.imageService.getImages();
         for (let searchImage of SearchService.searchImages) {
             searchImage.relevance = 0;
@@ -57,7 +61,9 @@ export class SearchService {
                     image.relevance++;
                 }
             }
-            return (image.relevance > 0);
+            console.log(SearchService.fromDate + ' -- ' + SearchService.toDate);
+            console.log((image.uploadDate >= SearchService.fromDate) + ' ' + (image.uploadDate <= SearchService.toDate));
+            return (image.relevance > 0 && image.uploadDate >= SearchService.fromDate && image.uploadDate <= SearchService.toDate);
         });
     }
 
@@ -92,7 +98,9 @@ export class SearchService {
 
     Navigate(queryParams: any = this.defaultQueryParams): Promise<boolean> {
         console.log(Date.now() + ' ###### Starting navigation ######');
+        SearchService.tags = queryParams.tags;
         this.Search();
+        SearchService.sortMode = queryParams.sort;
         this.Sort();
         console.log(SearchService.searchImages);
         return this.router.navigate(['/gallery'], {
