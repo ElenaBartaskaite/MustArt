@@ -62,10 +62,11 @@
       <form>
         <div class="row">
           <div class="col-md-10">
-            <textarea class="form-control" rows="3"></textarea>
+            <div class= "inpunt-group">
+            <textarea class="form-control" rows="3" [(ngModel)]="reviewText" ></textarea></div>
           </div>
           <div class="col">
-            <button type="submit">Submit</button>
+            <button type="submit" (click)="fff()" >Submit</button>
           </div>
         </div>
       </form>
