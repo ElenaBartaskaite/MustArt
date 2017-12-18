@@ -1,74 +1,50 @@
 <div class="main container">
   <div class="row">
-    <div class="col-md-3">
+    <div class="col-md-4">
       <img src='assets/images/{{image.id}}.png' alt="{{image.name}}">
     </div>
-    <div class="col-md-3">
+    <div class="col-md-2">
       <p>{{image.name}}</p>
       <p>{{image.description}}</p>
       <a class="badge badge-secondary image-card-tag" *ngFor="let tag of image.tags" href="gallery?keywords={{tag}}">{{tag}}</a>
     </div>
-
-    <div class="col">
+    <div class="col-md-1">
       <p>Order:</p>
-      <div class="row">
-        <div class="col-md-2">
-          <p>Print</p>
-        </div>
-        <div class="col">
-          <select class="form-control">
-            <option>50 x 30 cm</option>
-            <option>75 x 40 cm</option>
-          </select>
-        </div>
-        <div class="col-2">{{image.prices["print"]}}</div>
-        <div class="col">
-          <button>Add to cart</button>
-        </div>
-      </div>
-      <div class="row">
-          <div class="col-md-2">
-            <p>T-shirt</p>
-          </div>
-          <div class="col">
-            <select class="form-control">
-                <option>S</option>
-                <option>M</option>
-                <option>L</option>
-              </select>
-          </div>
-          <div class="col-md-2">{{image.prices["shirt"]}}</div>
-          <div class="col">
-            <button>Add to cart</button>
-          </div>
-        </div>
-        <div class="row">
-            <div class="col-md-2">
-              <p>Mug</p>
-            </div>
-            <div class="col">
-            </div>
-            <div class="col-md-2">{{image.prices["mug"]}}</div>
-            <div class="col">
-              <button>Add to cart</button>
-            </div>
-          </div>
-          <div class="row">
-              <div class="col-md-2">
-                <p>Wallpaper</p>
-              </div>
-              <div class="col">
-                  <select class="form-control">
-                      <option>Optional</option>
-                      <option>1600 x 1200</option>
-                      <option>1024 × 768</option>
-                    </select>
-              </div>
-              <div class="col-md-2"></div>
-              <div class="col">
-                <button>Set as Wallpaper</button>
-              </div>
-            </div>
+      <p>Print</p>
+      <p>T-shirt</p>
+      <p>Mug</p>
+      <p>Wallpaper</p>
+    </div>
+    <div class="col-md-2">
+      <br>
+      <select class="form-control">
+        <option>50 x 30 cm</option>
+        <option>75 x 40 cm</option>
+      </select>
+      <select class="form-control">
+        <option>S</option>
+        <option>M</option>
+        <option>L</option>
+      </select>
+      <br>
+      <select class="form-control">
+        <option>Optional</option>
+        <option>1600 x 1200</option>
+        <option>1024 × 768</option>
+      </select>
+    </div>
+    <div class="col-md-1">
+      <br>
+      <p>{{image.prices["print"]}}</p>
+      <p>{{image.prices["shirt"]}}</p>
+      <p>{{image.prices["mug"]}}</p>
+    </div>
+    <div class="col-md-2">
+      <br>
+      <button>Add to cart</button>
+      <button>Add to cart</button>
+      <button>Add to cart</button>
+      <button>Set as Wallpaper</button>
     </div>
   </div>
 
@@ -80,6 +56,7 @@
       <a class="nav-link" id="questions-tab" data-toggle="tab" href="#questions">Questions</a>
     </li>
   </ul>
+
   <div class="tab-content" id="myTabContent">
     <div class="tab-pane fade show active" id="reviews">
       <form>
@@ -92,18 +69,31 @@
           </div>
         </div>
       </form>
+      <div class="row" *ngFor="let review of image.reviews">
+        <div class="col-md-7">
+          <p>{{review.username}} <span *ngIf="review.verified">verified</span></p>
+        </div>
+        <div class="col-md-5">
+            <p>{{review.reviewDate.getFullYear()}}-{{review.reviewDate.getMonth()}}-{{review.reviewDate.getDate()}}</p>
+        </div>
+        <div class="col">
+        <p>{{review.text}}</p>
+        </div>
+      </div>
     </div>
+
     <div class="tab-pane fade" id="questions">
-        <form>
-            <div class="row">
-              <div class="col-md-10">
-                <textarea class="form-control" rows="3"></textarea>
-              </div>
-              <div class="col">
-                <button type="submit">Submit</button>
-              </div>
-            </div>
-          </form>
+      <form>
+        <div class="row">
+          <div class="col-md-10">
+            <textarea class="form-control" rows="3"></textarea>
+          </div>
+          <div class="col">
+            <button type="submit">Submit</button>
+          </div>
+        </div>
+      </form>
+    
     </div>
   </div>
 </div>
