@@ -12,8 +12,25 @@
 '~bootstrap/scss/badge',
 '~bootstrap/scss/buttons';
 
+app-searchbar {
+    margin-top: -4px;
+    background-color: white;
+    position: fixed;
+    width: 100%;
+    z-index: 500;
+}
+
+app-faq .card {
+    background-color: $light;
+    color: $dark;
+}
+
 .main {
     padding-top: 48px !important;
+}
+
+a {
+    color:$warning;
 }
 
 a, .color-picker-box{
@@ -26,6 +43,12 @@ a, .color-picker-box{
     }
 }
 
+.main-calendar-days {
+    .is-selected {
+        background-color: $warning !important;
+    }
+}
+
 .color-picker-box {
     width: 30px;
 }
@@ -35,14 +58,6 @@ a, .color-picker-box{
     @extend .btn-sm;
     @extend .btn-warning;
     width: 100%;
-}
-
-app-searchbar {
-    margin-top: -4px;
-    background-color: white;
-    position: fixed;
-    width: 100%;
-    z-index: 500;
 }
 
 body, html {

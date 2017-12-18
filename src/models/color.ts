@@ -26,11 +26,7 @@ export class Color {
             this.r = r;
             this.g = g;
             this.b = b;
-            this.hex = this.Hex;
+            this.hex = ColorService.rgbToHex(this.r, this.g, this.b);
         }
-    }
-
-    get Hex() {
-        return ColorService.rgbToHex(this.r, this.g, this.b);
     }
 }

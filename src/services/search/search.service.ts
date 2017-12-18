@@ -19,8 +19,8 @@ export class SearchService {
 
     // Filtering
     static tags: string[] = [''];
-    static matchingColor: any;
-    static dominantColor: any;
+    static matchingColor: Color;
+    static dominantColor: Color;
     static fromDate: Date = new Date(2017, 1, 1);
     static toDate: Date = new Date();
     static resolutions: List<string> = new List<string>();
