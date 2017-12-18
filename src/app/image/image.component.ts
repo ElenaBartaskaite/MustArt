@@ -15,6 +15,7 @@ import 'rxjs/add/operator/filter';
 export class ImageComponent implements OnInit {
   image: SearchImage;
   id: string;
+  reviewText: string;
   constructor(private imageService: ImageService, private route: ActivatedRoute) { }
 
   ngOnInit() {
