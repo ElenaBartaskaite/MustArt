@@ -1,9 +1,9 @@
-<div class="container">
+<div class="main container">
   <div class="row">
-    <div class="col-3">
+    <div class="col-md-3">
       <img src='assets/images/{{image.id}}.png' alt="{{image.name}}">
     </div>
-    <div class="col-3">
+    <div class="col-md-3">
       <p>{{image.name}}</p>
       <p>{{image.description}}</p>
       <a class="badge badge-secondary image-card-tag" *ngFor="let tag of image.tags" href="gallery?keywords={{tag}}">{{tag}}</a>
@@ -12,7 +12,7 @@
     <div class="col">
       <p>Order:</p>
       <div class="row">
-        <div class="col-2">
+        <div class="col-md-2">
           <p>Print</p>
         </div>
         <div class="col">
@@ -27,7 +27,7 @@
         </div>
       </div>
       <div class="row">
-          <div class="col-2">
+          <div class="col-md-2">
             <p>T-shirt</p>
           </div>
           <div class="col">
@@ -37,24 +37,24 @@
                 <option>L</option>
               </select>
           </div>
-          <div class="col-2">{{image.prices["shirt"]}}</div>
+          <div class="col-md-2">{{image.prices["shirt"]}}</div>
           <div class="col">
             <button>Add to cart</button>
           </div>
         </div>
         <div class="row">
-            <div class="col-2">
+            <div class="col-md-2">
               <p>Mug</p>
             </div>
             <div class="col">
             </div>
-            <div class="col-2">{{image.prices["mug"]}}</div>
+            <div class="col-md-2">{{image.prices["mug"]}}</div>
             <div class="col">
               <button>Add to cart</button>
             </div>
           </div>
           <div class="row">
-              <div class="col-2">
+              <div class="col-md-2">
                 <p>Wallpaper</p>
               </div>
               <div class="col">
@@ -64,7 +64,7 @@
                       <option>1024 × 768</option>
                     </select>
               </div>
-              <div class="col-2"></div>
+              <div class="col-md-2"></div>
               <div class="col">
                 <button>Set as Wallpaper</button>
               </div>
@@ -84,7 +84,7 @@
     <div class="tab-pane fade show active" id="reviews">
       <form>
         <div class="row">
-          <div class="col-10">
+          <div class="col-md-10">
             <textarea class="form-control" rows="3"></textarea>
           </div>
           <div class="col">
@@ -96,7 +96,7 @@
     <div class="tab-pane fade" id="questions">
         <form>
             <div class="row">
-              <div class="col-10">
+              <div class="col-md-10">
                 <textarea class="form-control" rows="3"></textarea>
               </div>
               <div class="col">
