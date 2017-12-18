@@ -70,14 +70,16 @@
         </div>
       </form>
       <div class="row" *ngFor="let review of image.reviews">
-        <div class="col-md-7">
-          <p>{{review.username}} <span *ngIf="review.verified">verified</span></p>
+        <div class="col-md-9">
+          <p>{{review.username}}
+            <span *ngIf="review.verified">verified</span>
+          </p>
         </div>
-        <div class="col-md-5">
-            <p>{{review.reviewDate.getFullYear()}}-{{review.reviewDate.getMonth()}}-{{review.reviewDate.getDate()}}</p>
+        <div class="col-md-3">
+          <p>{{review.reviewDate.getFullYear()}}-{{review.reviewDate.getMonth()}}-{{review.reviewDate.getDate()}}</p>
         </div>
         <div class="col">
-        <p>{{review.text}}</p>
+          <p>{{review.text}}</p>
         </div>
       </div>
     </div>
@@ -93,7 +95,36 @@
           </div>
         </div>
       </form>
-    
+      <div *ngFor="let question of image.questions">
+        <div class="row">
+          <div class="col-md-9">
+            <p>{{question.username}}
+              <span *ngIf="question.verified">verified</span>
+            </p>
+          </div>
+          <div class="col-md-3">
+            <p>{{question.askDate.getFullYear()}}-{{question.askDate.getMonth()}}-{{question.askDate.getDate()}}</p>
+          </div>
+          <div class="col-md-12">
+            <p>{{question.question}}</p>
+          </div>
+        </div>
+        <div class="row" *ngFor="let answer of question.answers">
+            <div class="col-md-1"></div>
+          <div class="col-md-8">
+            <p>{{answer.username}}
+              <span *ngIf="answer.best">best answer</span>
+            </p>
+          </div>
+          <div class="col-md-3">
+            <p>{{answer.answerDate.getFullYear()}}-{{answer.answerDate.getMonth()}}-{{answer.answerDate.getDate()}}</p>
+          </div>
+          <div class="col-md-1"></div>
+          <div class="col-md-11">
+            <p>{{answer.answer}}</p>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </div>
