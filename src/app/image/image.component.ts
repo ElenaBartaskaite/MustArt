@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { Image, SearchImage } from '../../models/image';
-import{ImageService}from '../../services/image/image.service';
+import { ImageService } from '../../services/image/image.service';
 
 import { ActivatedRoute } from '@angular/router';
 import 'rxjs/add/operator/filter';
