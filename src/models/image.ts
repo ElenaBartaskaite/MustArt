@@ -16,16 +16,21 @@ export class Image {
     questions: {
         question:string,
         username: string,
+        askDate: Date,
+        verified: boolean,
         answers: {
             answer: string,
             relevance: number,
             username: string,
+            answerDate: Date,
+            best: boolean,
         }[]
     }[];
     reviews: {
         text: string,
         verified: boolean,
         username: string,
+        reviewDate: Date,
     }[];
 }
 

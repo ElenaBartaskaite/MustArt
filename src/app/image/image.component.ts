@@ -19,7 +19,7 @@ export class ImageComponent implements OnInit {
 
   ngOnInit() {
     this.GetImage();
-    console.log(this.image.prices.print);
+    console.log(this.image.reviews[0].reviewDate);
   }
   GetImage(): void {
     this.route.queryParams
