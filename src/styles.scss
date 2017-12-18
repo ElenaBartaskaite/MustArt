@@ -3,6 +3,18 @@
 @import "~bootstrap/dist/css/bootstrap.css";
 @import url('https://fonts.googleapis.com/css?family=Roboto');
 
+app-gallery {
+    margin-top: 1600px;
+}
+
+app-searchbar {
+    margin-top: -4px;
+    background-color: white;
+    position: fixed;
+    width: 100%;
+    z-index: 500;
+}
+
 body, html {
     font-family: 'Roboto';
 }
@@ -20,6 +32,11 @@ p {
     z-index: 1000;
 }
 
+.row, .container {
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
 .row.row-grid [class*="col-"] + [class*="col-"] {
     margin-top: 15px;
 }
@@ -27,6 +44,11 @@ p {
 .label-no-margin {
     margin: 0px !important;
     height: 100%;
+}
+
+.totally-centered {
+    text-align: center;
+    vertical-align: middle;
 }
 
 @media (min-width: 1200px) {

@@ -1,4 +1,4 @@
-<div class="container justify-content-center">
+<div class="main container justify-content-center" role="main">
   <div class="row justify-content-start">
     <div class="form-inline">
       <div class="form-group">
@@ -22,8 +22,8 @@
   <div class="row justify-content-end">
     <div class="col col-filter-label align-middle">
       <div class="form-inline" style="height:100%;">
-          <div class="form-group">
-        <div class="align-middle no-margin align-middle">We've found {{ss.searchImages.length}} results</div>
+        <div class="form-group">
+          <div class="align-middle no-margin align-middle">We've found {{ss.searchImages.length}} results</div>
         </div>
       </div>
     </div>
@@ -34,7 +34,7 @@
             Display:
           </div>
           <div class="col-auto col-filter-input-right">
-            <button type="button" class="btn btn-sm btn-primary" (click)='ChangeDisplayMode()'>{{ss.displayMode}}</button>
+            <button type="button" class="btn btn-sm btn-warning" (click)='ChangeDisplayMode()'>{{ss.displayMode}}</button>
           </div>
         </div>
         <div class="form-group">
@@ -43,7 +43,7 @@
           </div>
           <div class="col-auto col-filter-input-right">
             <div class="dropdown" ngbDropdown>
-              <button type="button" class="btn btn-sm btn-primary dropdown-toggle" id="sortModeDropdown" ngbDropdownToggle>
+              <button type="button" class="btn btn-sm btn-warning dropdown-toggle" id="sortModeDropdown" ngbDropdownToggle>
                 {{ss.sortMode}}
               </button>
               <div class="dropdown-menu" aria-labelledby="sortModeDropdown" ngbDropdownMenu>
@@ -57,7 +57,7 @@
       </div>
     </div>
   </div>
-  <div class="row justify-content-center">
+  <div class="row justify-content-center" *ngIf="ss.searchImages.length > 0">
     <div class="card image-card" [class.col-sm-3]="ss.displayMode.toString()=='Normal'" [class.col-sm-4]="ss.displayMode.toString()=='Large'"
       *ngFor="let image of ss.searchImages">
       <a class="nav-link image-card-link" routerLink="/image" [queryParams]="{id: image.id}">
@@ -66,6 +66,24 @@
       <div class="card-body image-card-body">
         <h4 class="card-title image-card-title">{{image.name}}</h4>
         <a class="badge badge-secondary image-card-tag" *ngFor="let tag of image.tags" href="gallery?keywords={{tag}}">{{tag}}</a>
+      </div>
+    </div>
+  </div>
+  <div class="row" *ngIf="ss.searchImages.length < 1">
+    <div class="col-md-12 justify-content-center totally-centered">
+      <h1>
+        Oops!</h1>
+      <h2>
+        It seems there's nothing here...</h2>
+      <div class="error-details">
+        No results were found for your search query, try the following:
+      </div>
+      <div class="error-actions">
+        <a href="/" class="btn btn-warning btn-lg text-warning">
+          <span class="glyphicon glyphicon-home"></span>
+          Take me home </a>
+        <a href="http://www.jquery2dotnet.com" class="btn btn-warning btn-lg text-warning">
+          <span class="glyphicon glyphicon-envelope"></span> Popular tags </a>
       </div>
     </div>
   </div>

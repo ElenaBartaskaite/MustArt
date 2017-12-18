@@ -26,6 +26,7 @@ import { ImageComponent } from './image/image.component';
 
 import { SearchService } from '../services/search/search.service';
 import { ImageService } from '../services/image/image.service';
+import { RoutingService } from '../services/routing/routing.service';
 
 const appRoutes: Routes = [
   { path: '', redirectTo: 'gallery', pathMatch: 'full' },
@@ -62,6 +63,7 @@ const appRoutes: Routes = [
   ],
   providers: [
     ImageService,
+    RoutingService,
     SearchService
   ],
   bootstrap: [

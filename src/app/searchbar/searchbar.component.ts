@@ -25,7 +25,11 @@ export class SearchbarComponent implements OnInit {
     SearchService.tags = this.rawKeywords.replace(re, ' ').split(' ');
     console.log(this.rawKeywords.replace(re, ' '));
     console.log(SearchService.tags);
-    this.searchService.Navigate({tags: SearchService.tags, sort: SearchService.sortMode});
+    this.searchService.Navigate({
+      tags: SearchService.tags,
+      sort: SearchService.sortMode,
+      display: SearchService.displayMode
+    });
   }
 
 }

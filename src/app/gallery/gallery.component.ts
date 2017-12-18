@@ -67,7 +67,8 @@ export class GalleryComponent implements OnInit {
     //this.searchService.Sort();
     this.searchService.Navigate({
       sort: this.ss.sortMode,
-      tags: this.ss.tags
+      tags: this.ss.tags,
+      display: this.ss.displayMode
     }).then(value => {
       console.log("Navigated by: " + this.routingService.getParam('sort') + ' ' + this.routingService.getParam('tags'));
     });

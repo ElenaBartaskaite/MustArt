@@ -7,6 +7,7 @@ import { List } from '../../models/list';
 import { DisplayModes } from '../../models/display-modes';
 import { SearchImage } from '../../models/image';
 
+import { RoutingService } from '../routing/routing.service';
 import { ImageService } from '../image/image.service';
 import { getLocaleDateTimeFormat } from '@angular/common/src/i18n/locale_data_api';
 
@@ -29,7 +30,11 @@ export class SearchService {
 
     static searchImages: SearchImage[] = [];
 
-    constructor(private imageService: ImageService, private router: Router) {
+    constructor(
+        private imageService: ImageService,
+        private router: Router,
+        private routingService: RoutingService
+    ) {
         SearchService.searchImages = this.imageService.getImages();
     }
 
@@ -93,9 +98,10 @@ export class SearchService {
         return this.router.navigate(['/gallery'], {
             queryParams: {
                 sort: queryParams.sort,
-                tags: queryParams.tags.join(',');
+                tags: queryParams.tags.join(','),
+                display: queryParams.display
             },
-            queryParamsHandling: ""
+            queryParamsHandling: "merge"
         });
     }
 }
