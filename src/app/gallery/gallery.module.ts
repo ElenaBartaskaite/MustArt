@@ -6,6 +6,7 @@ import { NgDatepickerModule } from 'ng2-datepicker';
 import { NgxMasonryModule } from 'ngx-masonry';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { GalleryComponent } from './gallery.component';
+import { ColorPickerModule } from 'ngx-color-picker';
 
 @NgModule({
   imports: [
@@ -14,7 +15,8 @@ import { GalleryComponent } from './gallery.component';
     RouterModule,
     NgbModule,
     NgDatepickerModule,
-    NgxMasonryModule
+    NgxMasonryModule,
+    ColorPickerModule
   ],
   declarations: [
     GalleryComponent

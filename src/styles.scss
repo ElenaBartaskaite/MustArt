@@ -2,9 +2,39 @@
 
 @import "~bootstrap/dist/css/bootstrap.css";
 @import url('https://fonts.googleapis.com/css?family=Roboto');
+@import 
+'~bootstrap/scss/functions',
+'~bootstrap/scss/variables',
+'~bootstrap/scss/mixins',
+'~bootstrap/scss/print',
+'~bootstrap/scss/reboot',
+'~bootstrap/scss/type',
+'~bootstrap/scss/badge',
+'~bootstrap/scss/buttons';
 
 .main {
     padding-top: 48px !important;
+}
+
+a, .color-picker-box{
+    cursor:pointer;
+}
+
+.color-picker {
+    .hex-text, .type-policy {
+        display:none !important;
+    }
+}
+
+.color-picker-box {
+    width: 30px;
+}
+
+.cp-ok-button-class {
+    @extend .btn;
+    @extend .btn-sm;
+    @extend .btn-warning;
+    width: 100%;
 }
 
 app-searchbar {

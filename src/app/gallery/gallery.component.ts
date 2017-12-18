@@ -20,6 +20,10 @@ import { Router } from '@angular/router';
 export class GalleryComponent implements OnInit {
   get images() {return SearchService.searchImages};
   get ss() {return SearchService;}
+  
+  fromDate: Date = new Date(2017, 1, 1);
+  toDate: Date = new Date();
+
   constructor(
     private searchService: SearchService,
     private activatedRoute: ActivatedRoute,
@@ -27,7 +31,6 @@ export class GalleryComponent implements OnInit {
     private imageService: ImageService,
     private routingService: RoutingService
   ) {
-    this.searchService.Navigate();
   }
 
   ngOnInit() {
@@ -43,6 +46,16 @@ export class GalleryComponent implements OnInit {
     }
   }
 
+  GoToTag(tag: string) {
+    SearchService.tags = [tag];
+    console.log(SearchService.tags);
+    this.searchService.Navigate({
+      tags: SearchService.tags,
+      sort: SearchService.sortMode,
+      display: SearchService.displayMode
+    });
+  }
+
   GoToImage(id: string) {
     this.router.navigate(['/image'], { queryParams: { id: id}, queryParamsHandling: 'merge' });
   }
@@ -54,6 +67,36 @@ export class GalleryComponent implements OnInit {
     else {
       SearchService.displayMode = DisplayModes.Normal;
     }
+  }
+
+  ChangeFromDate(event) {
+    console.log(event);
+    console.log(event.Date);
+    this.ss.fromDate = event;
+    this.searchService.Navigate({
+      sort: this.ss.sortMode,
+      tags: this.ss.tags,
+      display: this.ss.displayMode
+    }).then(value => {
+      console.log("Navigated by: " + this.routingService.getParam('sort') + ' ' + this.routingService.getParam('tags'));
+    });
+  }
+
+  ChangeToDate(event) {
+    console.log(event);
+    console.log(event.Date);
+    this.ss.toDate = event;
+    this.searchService.Navigate({
+      sort: this.ss.sortMode,
+      tags: this.ss.tags,
+      display: this.ss.displayMode
+    }).then(value => {
+      console.log("Navigated by: " + this.routingService.getParam('sort') + ' ' + this.routingService.getParam('tags'));
+    });
+  }
+
+  ChangeDominantColor(event) {
+    console.log(event);
   }
 
   get Images() { return SearchService.searchImages || []; }
