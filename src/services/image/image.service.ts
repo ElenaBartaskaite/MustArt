@@ -9,7 +9,7 @@ export class ImageService {
   images: SearchImage[] = [
     {
       "id": "1", "name": "name1", "description": "lorem",
-      "matchingColors": [new Color(0, 0, 0)], "dominantColor": new Color(0, 0, 0),
+      "matchingColors": [new Color(255, 0, 0)], "dominantColor": new Color(0, 0, 0),
       "uploadDate": new Date(2017, 1, 1), "tags": ["a"], "relevance": 0,
       "prices": { "mug": 10, "shirt": 15, "print": 10 },
       "questions": [{
@@ -20,7 +20,7 @@ export class ImageService {
     },
     {
       "id": "2", "name": "name2", "description": "a b",
-      "matchingColors": [new Color(0, 0, 0)], "dominantColor": new Color(0, 0, 0),
+      "matchingColors": [new Color(0, 255, 0)], "dominantColor": new Color(0, 0, 0),
       "uploadDate": new Date(2017, 1, 3), "tags": ["a"], "relevance": 0,
       "prices": { "mug": 10, "shirt": 15, "print": 10 },
       "questions": [{
