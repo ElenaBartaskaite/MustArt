@@ -21,7 +21,12 @@
     <div class="col-md-3">
       <p>{{image.name}}</p>
       <p>{{image.description}}</p>
-      <a class="badge badge-secondary image-card-tag" *ngFor="let tag of image.tags" href="gallery?keywords={{tag}}">{{tag}}</a>
+      <p>Tags:
+        <a class="badge badge-secondary image-card-tag" *ngFor="let tag of image.tags" href="gallery?keywords={{tag}}">{{tag}}</a>
+      </p>
+      <p>Matching colors:
+        <span class="badge image-card-tag" *ngFor="let color of image.matchingColors" [style.background-color]="color.hex" [style.color]="color.hex">X</span>
+      </p>
     </div>
 
     <div class="col-md-6">

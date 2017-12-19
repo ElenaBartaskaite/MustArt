@@ -33,6 +33,7 @@ import { RoutingService } from '../services/routing/routing.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { ToastrModule } from 'ngx-toastr';
+import { UploadComponent } from './upload/upload.component';
 
 const appRoutes: Routes = [
   { path: '', redirectTo: 'gallery', pathMatch: 'full' },
@@ -43,6 +44,7 @@ const appRoutes: Routes = [
   { path: 'profile', component: ProfileComponent },
   { path: 'image/:id', component: ImageComponent },
   { path: 'image', component: ImageComponent },
+  { path: 'upload', component: UploadComponent },
   { path: '**', component: PageNotFoundComponent }
 ];
 
@@ -53,7 +55,8 @@ const appRoutes: Routes = [
     AboutComponent,
     FaqComponent,
     ProfileComponent,
-    ImageComponent
+    ImageComponent,
+    UploadComponent
   ],
   imports: [
     RouterModule.forRoot(
