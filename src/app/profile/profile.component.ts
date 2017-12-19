@@ -7,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProfileComponent implements OnInit {
 
+  subscriptions: string[] = ["nature", "math", "trees", "deep", "math", "trees", "deep", "math", "trees", "deep", "math", "trees", "deep"];
+
   constructor() { }
 
   ngOnInit() {

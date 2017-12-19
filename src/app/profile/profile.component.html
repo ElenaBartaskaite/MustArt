@@ -1,5 +1,42 @@
-<div class="main container">
-  <p>
-    profile works!
-  </p>
+<div class="main container" role="main">
+  <div class="card mb-3">
+    <div class="card-body">
+      <h2 class="card-title">Profile</h2>
+      <form class="form">
+        <div class="form-group row">
+          <div class="col-md-4 text-md-right col-filter-label align-middle">
+            Subscriptions
+          </div>
+          <input class="form-controll col-md-4" type="text" />
+          <div class="col-auto col-filter-input-right">
+            <button type="button" class="btn btn-warning">Add</button>
+          </div>
+        </div>
+        <div class="row justify-content-center">
+          <div class="col-md-4">
+            <a class="badge badge-secondary text-white image-card-tag" *ngFor="let tag of subscriptions" (click)="GoToTag(tag)">{{tag}}</a>
+          </div>
+        </div>
+        <hr/>
+        <div class="form-group row">
+          <div class="col-md-4 text-md-right">
+            Email
+          </div>
+          <input class="form-controll col-md-4" type="text" />
+          <div class="col-md-4">
+            <input class="form-controll" type="text" />
+          </div>
+        </div>
+        <div class="form-group row">
+          <div class="col-md-4 text-md-right">
+            Email
+          </div>
+          <input class="form-controll col-md-4" type="text" />
+          <div class="col-md-4">
+            <input class="form-controll" type="text" />
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
 </div>

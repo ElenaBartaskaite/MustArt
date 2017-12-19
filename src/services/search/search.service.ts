@@ -10,6 +10,7 @@ import { SearchImage } from '../../models/image';
 import { RoutingService } from '../routing/routing.service';
 import { ImageService } from '../image/image.service';
 import { getLocaleDateTimeFormat } from '@angular/common/src/i18n/locale_data_api';
+import { ColorService } from '../color/color.service';
 
 @Injectable()
 export class SearchService {
@@ -19,8 +20,8 @@ export class SearchService {
 
     // Filtering
     static tags: string[] = [''];
-    static matchingColor: Color;
-    static dominantColor: Color;
+    static matchingColor: Color = null;
+    static dominantColor: Color = null;
     static fromDate: Date = new Date(2017, 1, 1);
     static toDate: Date = new Date();
     static resolutions: List<string> = new List<string>();
@@ -30,7 +31,7 @@ export class SearchService {
 
     static searchImages: SearchImage[] = [];
 
-    get Tags() {return SearchService.tags;}
+    get Tags() { return SearchService.tags; }
 
     constructor(
         private imageService: ImageService,
@@ -39,6 +40,8 @@ export class SearchService {
     ) {
         SearchService.searchImages = this.imageService.getImages();
         SearchService.tags = [''];
+        SearchService.sortMode = "Newest";
+        this.Sort();
     }
 
     defaultQueryParams = {
@@ -61,9 +64,21 @@ export class SearchService {
                     image.relevance++;
                 }
             }
-            console.log(SearchService.fromDate + ' -- ' + SearchService.toDate);
-            console.log((image.uploadDate >= SearchService.fromDate) + ' ' + (image.uploadDate <= SearchService.toDate));
-            return (image.relevance > 0 && image.uploadDate >= SearchService.fromDate && image.uploadDate <= SearchService.toDate);
+            let colorMatches = 1, colorDominance = 1;
+            if (SearchService.matchingColor != null) {
+                colorMatches = SearchService.matchingColor.IsSimilarTo(image.matchingColors);
+            }
+            if (SearchService.dominantColor != null) {
+                colorDominance = SearchService.dominantColor.IsSimilarTo([image.dominantColor]);
+            }
+            console.log('dom:' + colorDominance + ' match: ' + colorMatches);
+            return (
+                image.relevance > 0 &&
+                image.uploadDate >= SearchService.fromDate &&
+                image.uploadDate <= SearchService.toDate &&
+                colorMatches > 0 &&
+                colorDominance > 0
+            );
         });
     }
 

@@ -6,6 +6,7 @@ import { ImageService } from '../../services/image/image.service';
 import { RoutingService } from '../../services/routing/routing.service';
 import { ColorService } from '../../services/color/color.service';
 
+import { Resolutions } from '../../models/resolutions';
 import { DisplayModes } from '../../models/display-modes';
 import { SortModes } from '../../models/sort-modes';
 import { Image, SearchImage } from '../../models/image';
@@ -21,6 +22,7 @@ import { Router } from '@angular/router';
 export class GalleryComponent implements OnInit {
   get images() { return SearchService.searchImages };
   get ss() { return SearchService; }
+  get resolutions() { return Resolutions.All; }
 
   fromDate: Date = new Date(2017, 1, 1);
   toDate: Date = new Date();
@@ -36,7 +38,7 @@ export class GalleryComponent implements OnInit {
   }
 
   ngOnInit() {
-
+    console.log(this.resolutions);
   }
 
   get ColumnCount(): number {
@@ -98,22 +100,25 @@ export class GalleryComponent implements OnInit {
   }
 
   ChangeDominantColor(event) {
-    this.ss.dominantColor = {
-      r: ColorService.hexToR(event),
-      g: ColorService.hexToG(event),
-      b: ColorService.hexToB(event),
-      hex: event
-    } 
     console.log(event);
+    if (event != null)
+      this.ss.dominantColor = new Color(ColorService.hexToR(event), ColorService.hexToG(event), ColorService.hexToB(event));
+    else
+      this.ss.dominantColor = null;
+    this.searchService.Navigate({
+      sort: this.ss.sortMode,
+      tags: this.ss.tags,
+      display: this.ss.displayMode
+    }).then(value => {
+      console.log("Navigated by: " + this.routingService.getParam('sort') + ' ' + this.routingService.getParam('tags'));
+    });
   }
 
   ChangeMatchingColor(event) {
-    this.ss.matchingColor = {
-      r: ColorService.hexToR(event),
-      g: ColorService.hexToG(event),
-      b: ColorService.hexToB(event),
-      hex: event
-    }
+    if (event != null)
+      this.ss.matchingColor = new Color(ColorService.hexToR(event), ColorService.hexToG(event), ColorService.hexToB(event));
+    else
+      this.ss.matchingColor = null;
     this.searchService.Navigate({
       sort: this.ss.sortMode,
       tags: this.ss.tags,

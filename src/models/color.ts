@@ -1,4 +1,5 @@
 import { ColorService } from '../services/color/color.service';
+import { forEach } from '@angular/router/src/utils/collection';
 
 export class Color {
     public r: number;
@@ -28,5 +29,21 @@ export class Color {
             this.b = b;
             this.hex = ColorService.rgbToHex(this.r, this.g, this.b);
         }
+    }
+
+    static similarityTreshold = 90;
+
+    public IsSimilarTo?(colors: Color[]): number {
+        let similarity = 0;
+        for (let color of colors) {
+            if (
+                Math.abs(this.r - color.r) <= Color.similarityTreshold &&
+                Math.abs(this.g - color.g) <= Color.similarityTreshold &&
+                Math.abs(this.b - color.b) <= Color.similarityTreshold
+            ) {
+                similarity++;
+            }
+        }
+        return similarity;
     }
 }

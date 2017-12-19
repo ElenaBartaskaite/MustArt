@@ -1,51 +1,98 @@
 <div class="main container">
   <div class="row">
-    <div class="col-md-4"><a href="assets/images/{{image.id}}.png">
-      <img src='assets/images/{{image.id}}.png' alt="{{image.name}}">
-    </a>
+    <div class="col-md-3">
+      <div class="row">
+        <a class="col-md-12 img-preview" target="_blank" href="{{activeSrc}}">
+          <img src='{{activeSrc}}' alt="{{image.name}}">
+        </a>
+      </div>
+      <div class="row">
+        <button class="col-4 img-thumbnail img-thumbnail-active" id="imgThumbnail" (click)="ChangePreview($event)">
+          <img src='{{imgPreview.src}}' alt="{{image.name}} Print">
+        </button>
+        <button class="col-4 img-thumbnail" id="tshirtThumbnail" (click)="ChangePreview($event)">
+          <img src='{{tshirtPreview.src}}' alt="{{image.name}} T-Shirt">
+        </button>
+        <button class="col-4 img-thumbnail" id="mugThumbnail" (click)="ChangePreview($event)">
+          <img src='{{mugPreview.src}}' alt="{{image.name}} Mug">
+        </button>
+      </div>
     </div>
-    <div class="col-md-2">
+    <div class="col-md-3">
       <p>{{image.name}}</p>
       <p>{{image.description}}</p>
       <a class="badge badge-secondary image-card-tag" *ngFor="let tag of image.tags" href="gallery?keywords={{tag}}">{{tag}}</a>
     </div>
-    <div class="col-md-1">
-      <p>Order:</p>
-      <p>Print</p>
-      <p>T-shirt</p>
-      <p>Mug</p>
-      <p>Wallpaper</p>
-    </div>
-    <div class="col-md-2">
-      <br>
-      <select class="form-control">
-        <option>50 x 30 cm</option>
-        <option>75 x 40 cm</option>
-      </select>
-      <select class="form-control">
-        <option>S</option>
-        <option>M</option>
-        <option>L</option>
-      </select>
-      <br>
-      <select class="form-control">
-        <option>Optional</option>
-        <option>1600 x 1200</option>
-        <option>1024 × 768</option>
-      </select>
-    </div>
-    <div class="col-md-1">
-      <br>
-      <p>{{image.prices["print"]}}</p>
-      <p>{{image.prices["shirt"]}}</p>
-      <p>{{image.prices["mug"]}}</p>
-    </div>
-    <div class="col-md-2">
-      <br>
-      <button>Add to cart</button>
-      <button>Add to cart</button>
-      <button>Add to cart</button>
-      <button>Set as Wallpaper</button>
+
+    <div class="col-md-6">
+      <div class="form-group form-inline">
+        <div class="col-md-2 col-filter-label">
+          <div class="align-middle" for="print">Print</div>
+        </div>
+        <div class="col-md-6 col-filter-input-left">
+          <select class="form-control" style="width:100%">
+            <option>50 x 30 cm</option>
+            <option>75 x 40 cm</option>
+          </select>
+        </div>
+        <div class="col-md-1">
+          <div class="align-middle" for="print">{{image.prices["print"]}}€</div>
+        </div>
+        <div class="col-md">
+          <button type="button" class="btn btn-warning btn-block">Add to cart</button>
+        </div>
+      </div>
+
+      <div class="form-group  form-inline">
+        <div class="col-md-2 col-filter-label">
+          <div class="mr-sm-2 align-middle" for="print">T-Shirt</div>
+        </div>
+        <div class="col-md-6 col-filter-input-left">
+          <select class="form-control" style="width:100%">
+            <option>S</option>
+            <option>M</option>
+            <option>L</option>
+          </select>
+        </div>
+        <div class="col-md-1">
+          <div class="mr-sm-2 align-middle" for="print">{{image.prices["shirt"]}}€</div>
+        </div>
+        <div class="col-md">
+          <button type="button" class="btn btn-warning btn-block">Add to cart</button>
+        </div>
+      </div>
+
+      <div class="form-group  form-inline">
+        <div class="col-md-2 col-filter-label">
+          <div class="mr-sm-2 align-middle" for="print">Mug</div>
+        </div>
+        <div class="col-md-6 col-filter-input-left">
+        </div>
+        <div class="col-md-1">
+          <div class="mr-sm-2 align-middle" for="print">{{image.prices["mug"]}}€</div>
+        </div>
+        <div class="col-md">
+          <button type="button" class="btn btn-warning btn-block">Add to cart</button>
+        </div>
+      </div>
+
+      <div class="form-group  form-inline">
+        <div class="col-md-2 col-filter-label">
+          <div class="mr-sm-2 align-middle" for="print">Wallpaper</div>
+        </div>
+        <div class="col-md-6 col-filter-input-left">
+          <select class="form-control" style="width:100%">
+            <option *ngFor="let resolution of resolutions" value="{{resolution}}">{{resolution[0]}} x {{resolution[1]}}
+              <span *ngIf="resolution[0]==1920">(Optimal)</span>
+            </option>
+          </select>
+        </div>
+        <div class="col-md-1">
+        </div>
+        <div class="col-md">
+          <a class="btn btn-warning btn-block" target="_blank" href="assets/images/{{image.id}}.png">Set</a>
+        </div>
+      </div>
     </div>
   </div>
 
@@ -62,12 +109,13 @@
     <div class="tab-pane fade show active" id="reviews">
       <form>
         <div class="row">
-          <div class="col-md-10">
-            <div class= "input-group">
-            <textarea class="form-control" rows="3" name="reviewText" [(ngModel)]="reviewText" ></textarea></div>
+          <div class="col-md-11">
+            <div class="input-group">
+              <textarea class="form-control" rows="3" name="reviewText" [(ngModel)]="reviewText"></textarea>
+            </div>
           </div>
           <div class="col">
-            <button type="submit" (click)="fff()" >Submit</button>
+            <button type="submit" (click)="fff()">Submit</button>
           </div>
         </div>
       </form>
@@ -78,7 +126,7 @@
           </p>
         </div>
         <div class="col-md-3">
-          <p>{{review.reviewDate.getFullYear()}}-{{review.reviewDate.getMonth()}}-{{review.reviewDate.getDate()}}</p>
+          <p style="text-align:right;">{{review.reviewDate.getFullYear()}}-{{review.reviewDate.getMonth()}}-{{review.reviewDate.getDate()}}</p>
         </div>
         <div class="col">
           <p>{{review.text}}</p>
@@ -90,41 +138,44 @@
       <form>
         <div class="row">
           <div class="col-md-10">
-            <textarea class="form-control" rows="3"></textarea>
+            <textarea class="form-control" name="questionText" [(ngModel)]="questionText" rows="3"></textarea>
           </div>
-          <div class="col">
-            <button type="submit">Submit</button>
+          <div class="col-md">
+            <button type="submit" class="btn btn-warning btn-block btn-lg">Submit</button>
           </div>
         </div>
       </form>
-      <div *ngFor="let question of image.questions">
-        <div class="row">
-          <div class="col-md-9">
-            <p>{{question.username}}
-              <span *ngIf="question.verified">verified</span>
-            </p>
+      <div class="card" *ngFor="let question of image.questions">
+        <div class="card-body">
+          <div class="card-title">
+            <span class="text-warning">{{question.username}} </span>
           </div>
-          <div class="col-md-3">
-            <p>{{question.askDate.getFullYear()}}-{{question.askDate.getMonth()}}-{{question.askDate.getDate()}}</p>
-          </div>
-          <div class="col-md-12">
+          <blockquote class="blockquote mb-0">
             <p>{{question.question}}</p>
-          </div>
-        </div>
-        <div class="row" *ngFor="let answer of question.answers">
-            <div class="col-md-1"></div>
-          <div class="col-md-8">
-            <p>{{answer.username}}
-              <span *ngIf="answer.best">best answer</span>
-            </p>
-          </div>
-          <div class="col-md-3">
-            <p>{{answer.answerDate.getFullYear()}}-{{answer.answerDate.getMonth()}}-{{answer.answerDate.getDate()}}</p>
-          </div>
-          <div class="col-md-1"></div>
-          <div class="col-md-11">
-            <p>{{answer.answer}}</p>
-          </div>
+          </blockquote>
+
+          <footer class="text-muted" style="text-align:right;">
+            {{question.askDate.getFullYear()}}-{{question.askDate.getMonth()}}-{{question.askDate.getDate()}}
+          </footer>
+          <footer class="card-footer bg-transparent">
+
+            <div class="card" *ngFor="let answer of question.answers">
+              <div class="card-body">
+                <div class="card-title">
+                  <span class="text-warning">{{answer.username}}</span>
+                  <span class="badge badge-secondary text-white" *ngIf="answer.best">
+                    best answer
+                  </span>
+                </div>
+                <blockquote class="blockquote mb-0">
+                  <p>{{answer.answer}}</p>
+                </blockquote>
+                <footer class="text-muted" style="text-align:right;">
+                  {{answer.answerDate.getFullYear()}}-{{answer.answerDate.getMonth()}}-{{answer.answerDate.getDate()}}
+                </footer>
+              </div>
+            </div>
+          </footer>
         </div>
       </div>
     </div>

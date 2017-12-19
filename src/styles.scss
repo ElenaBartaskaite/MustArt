@@ -25,6 +25,26 @@ app-faq .card {
     color: $dark;
 }
 
+.img-preview, .img-thumbnail {
+    border-width: 1px;
+    border-color: $light;
+    border-radius: 0;
+}
+
+.img-thumbnail:hover {
+    border-width: 2px;
+    border-color: $primary;
+}
+
+.img-thumbnail-active {
+    border-width: 2px;
+    border-color: $warning;
+}
+
+.ngx-datepicker-input {
+    width: 120px !important;
+}
+
 .main {
     padding-top: 48px !important;
 }
@@ -33,7 +53,7 @@ a {
     color:$warning;
 }
 
-a, .color-picker-box{
+a, .color-picker-box, button{
     cursor:pointer;
 }
 
@@ -53,11 +73,11 @@ a, .color-picker-box{
     width: 30px;
 }
 
-.cp-ok-button-class {
+.cp-ok-button-class, .cp-cancel-button-class {
     @extend .btn;
-    @extend .btn-sm;
     @extend .btn-warning;
-    width: 100%;
+    width: 49%;
+    padding: 5px;
 }
 
 body, html {
@@ -94,6 +114,18 @@ p {
 .totally-centered {
     text-align: center;
     vertical-align: middle;
+}
+
+.btn{
+    font-size: 12px !important;
+}
+
+.btn-sm{
+    font-size: 8px !important;
+}
+
+.btn-lg{
+    font-size: 15px !important;
 }
 
 @media (min-width: 1200px) {

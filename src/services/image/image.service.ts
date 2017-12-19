@@ -14,7 +14,11 @@ export class ImageService {
       "prices": { "mug": 10, "shirt": 15, "print": 10 },
       "questions": [{
         "question": "?", "username": "user1", "askDate": new Date(2017, 1, 1), "verified": true,
-        "answers": [{ "answer": "yes", "relevance": 0, "username": "user2", "answerDate": new Date(2017, 1, 1), "best": true }]
+        "answers": [
+          { "answer": "yes", "relevance": 0, "username": "user2", "answerDate": new Date(2017, 1, 1), "best": true },
+          { "answer": "yes", "relevance": 0, "username": "user2", "answerDate": new Date(2017, 1, 1), "best": false },
+          { "answer": "yes", "relevance": 0, "username": "user2", "answerDate": new Date(2017, 1, 1), "best": false },
+        ]
       }],
       "reviews": [{ "text": "very good", "verified": true, "username": "user1", "reviewDate": new Date(2017, 1, 1) }]
     },
