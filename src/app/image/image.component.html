@@ -48,7 +48,7 @@
           <div class="mr-sm-2 align-middle" for="print">T-Shirt</div>
         </div>
         <div class="col-md-6 col-filter-input-left">
-          <select class="form-control" style="width:100%">
+          <select #tshirtDetails class="form-control" style="width:100%">
             <option>S</option>
             <option>M</option>
             <option>L</option>
@@ -58,7 +58,7 @@
           <div class="mr-sm-2 align-middle" for="print">{{image.prices["shirt"]}}€</div>
         </div>
         <div class="col-md">
-          <button type="button" class="btn btn-warning btn-block">Add to cart</button>
+          <button type="button" class="btn btn-warning btn-block" (click)="AddToCart(image.id, 'Tshirt', tshirtDetails)">Add to cart</button>
         </div>
       </div>
 
