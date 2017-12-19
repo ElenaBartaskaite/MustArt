@@ -30,6 +30,10 @@ import { SearchService } from '../services/search/search.service';
 import { ImageService } from '../services/image/image.service';
 import { RoutingService } from '../services/routing/routing.service';
 
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+import { ToastrModule } from 'ngx-toastr';
+
 const appRoutes: Routes = [
   { path: '', redirectTo: 'gallery', pathMatch: 'full' },
   { path: 'about', component: AboutComponent },
@@ -62,7 +66,9 @@ const appRoutes: Routes = [
     GalleryModule,
     NavbarModule,
     SearchbarModule,
-    FormsModule
+    FormsModule,
+    BrowserAnimationsModule, // required animations module
+    ToastrModule.forRoot(), // ToastrModule added
   ],
   providers: [
     ImageService,
