@@ -38,7 +38,14 @@ export class ImageComponent implements OnInit {
     this.GetImage();
     console.log(this.image.reviews[0].reviewDate);
   }
-
+  SubmitReview(){
+    this.image.reviews.push({text: this.reviewText, verified: false, username: "No Username", reviewDate: new Date(2017,1, 1)});
+    this.reviewText="";
+  }
+  SubmitQuestion(){
+    this.image.questions.push({question: this.questionText, username: "No Username", askDate: new Date(2017,1, 1), verified: false, answers:[]});
+    this.questionText="";
+  }
   GetImage(): void {
     this.route.queryParams
     .filter(params => params.id)
