@@ -12,7 +12,7 @@
               <p>{{item.product}}
                 <span *ngIf="item.details != ''">({{item.details}})</span>
               </p>
-              <h5>Price</h5>
+              <h5><span *ngIf="item.quantity > 1">{{item.quantity}} x </span>{{getPrice(item)}}€</h5>
             </div>
             <div class="col-md-1">
               <form>
@@ -20,7 +20,7 @@
               </form>
             </div>
             <div class="col-md-3">
-              <button type="button" class="btn btn-warning btn-block btn-lg" (click)="Remove()">Remove</button>
+              <button type="button" class="btn btn-warning btn-block btn-lg" (click)="Remove(item)">Remove</button>
             </div>
           </div>
         </div>
@@ -36,7 +36,7 @@
           <option>Post</option>
           <option>Office</option>
         </select>
-        <h5>Total: PRICE</h5>
+        <h5>Total: {{GetTotal()}}€</h5>
         <button type="button" class="btn btn-warning btn-block">Purchase</button>
       </div>
     </div>
