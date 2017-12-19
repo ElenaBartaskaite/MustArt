@@ -6,12 +6,13 @@ import { ImageService } from '../../services/image/image.service';
 
 import { ActivatedRoute } from '@angular/router';
 import 'rxjs/add/operator/filter';
+import { CartService } from '../../services/cart/cart.service';
 
 @Component({
   selector: 'app-image',
   templateUrl: './image.component.html',
   styleUrls: ['./image.component.scss'],
-  providers: [ImageService]
+  providers: [ImageService, CartService]
 })
 export class ImageComponent implements OnInit {
   image: SearchImage;
@@ -56,6 +57,10 @@ export class ImageComponent implements OnInit {
       this.activeSrc = this.imgPreview.src;
       return this.image = receivedImage;
     });
+  }
+
+  AddToCart(id: string, product: string, details: string) {
+    CartService.addItem(id, product, details);
   }
 
   ChangePreview(event) {

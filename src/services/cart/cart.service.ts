@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 @Injectable()
 export class CartService {
 
-    cartItems: [{
+    static cartItems: [{
         id: string,
         quantity: number,
         product: string,
@@ -37,11 +37,11 @@ export class CartService {
 
     constructor() { }
 
-    getItems() {
+    static getItems() {
         return this.cartItems;
     }
 
-    getItem(id: string, product: string, details: string) {
+    static getItem(id: string, product: string, details: string) {
         return this.cartItems.find(value => {
             if (value.id == id && value.product == product && value.details == details) {
                 return true;
@@ -49,7 +49,7 @@ export class CartService {
         })
     }
 
-    addItem(id: string, product: string, details: string) {
+    static addItem(id: string, product: string, details: string) {
         let item = this.getItem(id, product, details);
         if (item) {
             this.increaseItem(id, product, details);
@@ -64,7 +64,7 @@ export class CartService {
         }
     }
 
-    removeItem(id: string, product: string, details: string): boolean {
+    static removeItem(id: string, product: string, details: string): boolean {
         let item = this.getItem(id, product, details);
         if (item) {
             delete this.cartItems[this.cartItems.indexOf(item)];
@@ -75,7 +75,7 @@ export class CartService {
         }
     }
 
-    increaseItem(id: string, product: string, details: string): boolean {
+    static increaseItem(id: string, product: string, details: string): boolean {
         let item = this.getItem(id, product, details);
         if (item) {
             this.cartItems[this.cartItems.indexOf(item)].quantity++;
@@ -86,7 +86,7 @@ export class CartService {
         }
     }
 
-    decreaseItem(id: string, product: string, details: string): boolean {
+    static decreaseItem(id: string, product: string, details: string): boolean {
         let item = this.getItem(id, product, details);
         if (item) {
             this.cartItems[this.cartItems.indexOf(item)].quantity--;

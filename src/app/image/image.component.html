@@ -72,7 +72,7 @@
           <div class="mr-sm-2 align-middle" for="print">{{image.prices["mug"]}}€</div>
         </div>
         <div class="col-md">
-          <button type="button" class="btn btn-warning btn-block">Add to cart</button>
+          <button type="button" class="btn btn-warning btn-block" (click)="AddToCart(image.id, 'Mug', '')">Add to cart</button>
         </div>
       </div>
 

@@ -19,7 +19,7 @@ export class CartComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.cartItems = this.cartService.cartItems;
+    this.cartItems = CartService.cartItems;
     console.log(this.cartItems);
   }
 
