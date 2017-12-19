@@ -37,7 +37,7 @@ export class CartService {
 
     constructor() { }
 
-    static getItems() {
+    static get getItems() {
         return this.cartItems;
     }
 
@@ -69,7 +69,10 @@ export class CartService {
     static removeItem(id: string, product: string, details: string): boolean {
         let item = this.getItem(id, product, details);
         if (item) {
-            delete this.cartItems[this.cartItems.indexOf(item)];
+            var index = this.cartItems.indexOf(item, 0);
+            if (index > -1) {
+                this.cartItems.splice(index, 1);
+            }
             return true;
         }
         else {

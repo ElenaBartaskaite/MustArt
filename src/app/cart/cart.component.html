@@ -1,6 +1,6 @@
 <div class="main container" role="main">
-  <div class="container">
-    <div class="row">
+  <div class="card">
+    <div class="row card-body">
       <div class="col-md-9">
         <div *ngFor="let item of cartItems">
           <div class="form-group form-inline">
@@ -14,10 +14,8 @@
               </p>
               <h5><span *ngIf="item.quantity > 1">{{item.quantity}} x </span>{{getPrice(item)}}€</h5>
             </div>
-            <div class="col-md-1">
-              <form>
-                <input type="number" name="quantity" value="{{item.quantity}}" min="1" style="width:100%">
-              </form>
+            <div class="col-md-2">
+                <input class="form-control" type="number" name="quantity" value="{{item.quantity}}" min="1" style="width:100%">
             </div>
             <div class="col-md-3">
               <button type="button" class="btn btn-warning btn-block btn-lg" (click)="Remove(item)">Remove</button>

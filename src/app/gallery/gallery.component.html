@@ -1,47 +1,51 @@
 <div class="main container justify-content-center" role="main">
-  <div class="row justify-content-start">
-    <div class="form-inline">
-      <div class="form-group">
-        <div class="col-auto col-filter-label">
-          <div class="mr-sm-2 align-middle " for="fromDate">From:</div>
+  <div class="row card justify-content-start">
+    <div class="card-body">
+      <div class="form-inline">
+        <div class="form-group">
+          <div class="col-auto col-filter-label">
+            <div class="mr-sm-2 align-middle " for="fromDate">From:</div>
+          </div>
+          <div class="col-auto col-filter-input-left">
+            <ng-datepicker id="fromDate" (ngModelChange)="ChangeFromDate($event)" [(ngModel)]="fromDate"> </ng-datepicker>
+          </div>
         </div>
-        <div class="col-auto col-filter-input-left">
-          <ng-datepicker id="fromDate" (ngModelChange)="ChangeFromDate($event)" [(ngModel)]="fromDate"> </ng-datepicker>
+        <div class="form-group">
+          <div class="col-auto col-filter-label">
+            <label class="mr-sm-2 align-middle" for="toDate">To:</label>
+          </div>
+          <div class="col-auto col-filter-input-left">
+            <ng-datepicker id="toDate" (ngModelChange)="ChangeToDate($event)" [(ngModel)]="toDate"> </ng-datepicker>
+          </div>
         </div>
-      </div>
-      <div class="form-group">
-        <div class="col-auto col-filter-label">
-          <label class="mr-sm-2 align-middle" for="toDate">To:</label>
+        <div class="form-group">
+          <div class="col-auto col-filter-label">
+            <label class="mr-sm-2 align-middle">Image color:</label>
+            <input style="color: transparent" class="color-picker-box" (colorPickerCancel)="ChangeDominantColor(null)" (colorPickerSelect)="ChangeDominantColor($event)"
+              [(ngModel)]="ss.dominantColor" [(colorPicker)]="color1" [style.background]="color1" [cpPosition]="'bottom'" [cpPositionOffset]="'50%'"
+              [cpPositionRelativeToArrow]="true" [cpOKButton]="'true'" [cpCancelButton]="'true'" [cpCancelButtonText]="'Clear'"
+            />
+          </div>
         </div>
-        <div class="col-auto col-filter-input-left">
-          <ng-datepicker id="toDate" (ngModelChange)="ChangeToDate($event)" [(ngModel)]="toDate"> </ng-datepicker>
+        <div class="form-group">
+          <div class="col-auto col-filter-label">
+            <label class="mr-sm-2 align-middle">Matching color:</label>
+            <input style="color: transparent" class="color-picker-box" (colorPickerCancel)="ChangeMatchingColor(null)" (colorPickerSelect)="ChangeMatchingColor($event)"
+              [(ngModel)]="ss.matchingColor" [(colorPicker)]="color2" [style.background]="color2" [cpPosition]="'bottom'" [cpPositionOffset]="'50%'"
+              [cpPositionRelativeToArrow]="true" [cpOKButton]="'true'" [cpCancelButton]="'true'" [cpCancelButtonText]="'Clear'"
+            />
+          </div>
         </div>
-      </div>
-      <div class="form-group">
-        <div class="col-auto col-filter-label">
-          <label class="mr-sm-2 align-middle">Image color:</label>
-          <input style="color: transparent" class="color-picker-box" (colorPickerCancel)="ChangeDominantColor(null)" (colorPickerSelect)="ChangeDominantColor($event)"
-            [(ngModel)]="ss.dominantColor" [(colorPicker)]="color1" [style.background]="color1" [cpPosition]="'bottom'" [cpPositionOffset]="'50%'"
-            [cpPositionRelativeToArrow]="true" [cpOKButton]="'true'" [cpCancelButton]="'true'" [cpCancelButtonText]="'Clear'"
-          />
-        </div>
-      </div>
-      <div class="form-group">
-        <div class="col-auto col-filter-label">
-          <label class="mr-sm-2 align-middle">Matching color:</label>
-          <input style="color: transparent" class="color-picker-box" (colorPickerCancel)="ChangeMatchingColor(null)" (colorPickerSelect)="ChangeMatchingColor($event)"
-            [(ngModel)]="ss.matchingColor" [(colorPicker)]="color2" [style.background]="color2" [cpPosition]="'bottom'" [cpPositionOffset]="'50%'"
-            [cpPositionRelativeToArrow]="true" [cpOKButton]="'true'" [cpCancelButton]="'true'" [cpCancelButtonText]="'Clear'"
-          />
-        </div>
-      </div>
-      <div class="form-group">
-        <div class="col-auto col-filter-label">
-          <label class="mr-sm-2 align-middle">Resolution:</label>
-          <select style="height:100%;">
-            <option>None</option>
-            <option *ngFor="let resolution of resolutions" value="{{resolution}}">{{resolution[0]}} x {{resolution[1]}} <span *ngIf="resolution[0]==1920">(Optimal)</span></option>
-          </select>
+        <div class="form-group">
+          <div class="col-auto col-filter-label">
+            <label class="mr-sm-2 align-middle">Resolution:</label>
+            <select style="height:100%;">
+              <option>None</option>
+              <option *ngFor="let resolution of resolutions" value="{{resolution}}">{{resolution[0]}} x {{resolution[1]}}
+                <span *ngIf="resolution[0]==1920">(Optimal)</span>
+              </option>
+            </select>
+          </div>
         </div>
       </div>
     </div>
@@ -102,8 +106,8 @@
       </div>
     </div>
   </div>
-  <div class="row" *ngIf="ss.searchImages.length < 1">
-    <div class="col-md-12 justify-content-center totally-centered">
+  <div class="row card oops-card" *ngIf="ss.searchImages.length < 1">
+    <div class="card-body col-md-12 justify-content-center totally-centered">
       <h1>
         Oops!</h1>
       <h2>
@@ -112,10 +116,10 @@
         No results were found for your search query, but we got you covered:
       </div>
       <div class="error-actions">
-        <a href="/" class="btn btn-warning btn-lg text-dark">
+        <a href="/" class="btn btn-warning btn-lg">
           <span class="glyphicon glyphicon-home"></span>
           Take me home </a>
-        <a href="/gallery?tags=b" class="btn btn-warning btn-lg text-dark">
+        <a href="/gallery?tags=b" class="btn btn-warning btn-lg">
           <span class="glyphicon glyphicon-envelope"></span> Popular tags </a>
       </div>
     </div>

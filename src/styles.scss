@@ -22,7 +22,7 @@ app-searchbar {
 }
 
 a:hover {
-    color: rgb(224, 101, 0)
+    color: rgb(224, 101, 0) !important;
 }
 
 app-faq, app-about, app-profile {
@@ -30,6 +30,11 @@ app-faq, app-about, app-profile {
         background-color: $dark;
         color: $light;
     }
+}
+
+.oops-card {
+    background-color: $dark;
+    color: $light;
 }
 
 h1, h2 {

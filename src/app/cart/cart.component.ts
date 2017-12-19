@@ -21,16 +21,16 @@ export class CartComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.cartItems = CartService.cartItems;
+    this.cartItems = CartService.getItems;
     console.log(this.cartItems);
   }
   Remove(item){
-    CartService.removeItem(item.id, item.product, item.details)
+    CartService.removeItem(item.id, item.product, item.details);
   }
   GetTotal():number{
     var total:number=0;
     for (let item of this.cartItems) {
-      total=total+ this.getPrice(item);
+      total=total+ this.getPrice(item) * item.quantity;
     }
     return total;
   }
