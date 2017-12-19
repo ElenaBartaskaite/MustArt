@@ -30,7 +30,7 @@
           <div class="align-middle" for="print">Print</div>
         </div>
         <div class="col-md-6 col-filter-input-left">
-          <select class="form-control" style="width:100%">
+          <select #printDetails class="form-control" style="width:100%">
             <option>50 x 30 cm</option>
             <option>75 x 40 cm</option>
           </select>
@@ -39,7 +39,7 @@
           <div class="align-middle" for="print">{{image.prices["print"]}}€</div>
         </div>
         <div class="col-md">
-          <button type="button" class="btn btn-warning btn-block">Add to cart</button>
+          <button type="button" class="btn btn-warning btn-block" (click)="AddToCart(image.id, 'Print', printDetails.value)">Add to cart</button>
         </div>
       </div>
 
@@ -158,7 +158,7 @@
           <footer class="text-muted" style="text-align:right;">
             {{question.askDate.getFullYear()}}-{{question.askDate.getMonth()}}-{{question.askDate.getDate()}}
           </footer>
-          <footer class="card-footer bg-transparent">
+          <footer class="card-footer bg-transparent" *ngIf="question.answers.length > 0">
 
             <div class="card" *ngFor="let answer of question.answers">
               <div class="card-body">

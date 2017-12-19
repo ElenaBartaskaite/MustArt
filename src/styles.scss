@@ -19,16 +19,20 @@ app-searchbar {
     width: 100%;
     z-index: 500;
 }
-a:hover{
+
+a:hover {
     color: rgb(224, 101, 0)
 }
-app-faq .card {
-    background-color: $dark;
-    color: $light;
-} 
-app-about .card {
-    background-color: $dark;
-    color: $light;
+
+app-faq, app-about, app-profile {
+    .card {
+        background-color: $dark;
+        color: $light;
+    }
+}
+
+h1, h2 {
+    color: $warning;
 }
 
 .img-preview, .img-thumbnail {
