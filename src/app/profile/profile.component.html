@@ -7,33 +7,53 @@
           <div class="col-md-4 text-md-right col-filter-label align-middle">
             Subscriptions
           </div>
-          <input class="form-controll col-md-4" type="text" />
+          <input class="form-controll col-md-4" name="tagToAdd" [(ngModel)]="tagToAdd" type="text" />
           <div class="col-auto col-filter-input-right">
-            <button type="button" class="btn btn-warning">Add</button>
+            <button type="button" class="btn btn-warning" (click)="AddTag()">Add</button>
           </div>
         </div>
         <div class="row justify-content-center">
           <div class="col-md-4">
-            <a class="badge badge-secondary text-white image-card-tag" *ngFor="let tag of subscriptions" (click)="GoToTag(tag)">{{tag}}</a>
+            <span class="badge badge-secondary text-white image-card-tag" *ngFor="let tag of subscriptions">
+              <a (click)="GoToTag(tag)">{{tag}}</a>
+              <button class="badge badge-light" (click)="RemoveTag($event)">X</button>
+            </span>
           </div>
         </div>
         <hr/>
         <div class="form-group row">
           <div class="col-md-4 text-md-right">
-            Email
+            Email address
           </div>
-          <input class="form-controll col-md-4" type="text" />
-          <div class="col-md-4">
-            <input class="form-controll" type="text" />
+          <input class="form-controll col-md-4" id="emailAddressInput" name="emailAddressInput" [(ngModel)]="emailAddressInput" type="text" placeholder="{{emailAddress}}"/>
+          <div class="col-auto col-filter-input-right">
+            <button type="button" class="btn btn-warning" (click)="ChangeEmail()">Change</button>
+          </div>
+        </div>
+        <hr/>
+        <div class="form-group row">
+          <div class="col-md-4 text-md-right">
+            Current password
+          </div>
+          <input class="form-controll col-md-4" type="password" />
+          <div class="col-auto col-filter-input-right">
           </div>
         </div>
         <div class="form-group row">
           <div class="col-md-4 text-md-right">
-            Email
+            New password
           </div>
-          <input class="form-controll col-md-4" type="text" />
-          <div class="col-md-4">
-            <input class="form-controll" type="text" />
+          <input class="form-controll col-md-4" type="password" />
+          <div class="col-auto col-filter-input-right">
+            <button type="button" class="btn btn-warning">Change</button>
+          </div>
+        </div>
+        <div class="form-group row">
+          <div class="col-md-4 text-md-right">
+            Repeat password
+          </div>
+          <input class="form-controll col-md-4" type="password" />
+          <div class="col-auto col-filter-input-right">
           </div>
         </div>
       </form>
