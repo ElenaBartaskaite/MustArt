@@ -1,5 +1,15 @@
 <div class="main container" role="main">
-  <div *ngFor="let item of cartItems">
-    {{item.id}}
+    <div class="container">
+      <div class="row">
+        <div class="col-md-9">
+          <div *ngFor="let item of cartItems">
+              <img src='assets/images/{{item.id}}.png' alt="{{item.id}}">
+            {{item.id}}
+          </div>
+        </div>
+        <div class="col-md-3">
+          
+        </div>
+      </div>
+    </div>
   </div>
-</div>
