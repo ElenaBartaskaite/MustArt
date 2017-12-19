@@ -3,21 +3,77 @@ import { Injectable } from '@angular/core';
 @Injectable()
 export class CartService {
 
+    cartItems: [{
+        id: string,
+        quantity: number,
+        product: string,
+        details: string
+    }] = [{
+        id: "1",
+        quantity: 1,
+        product: "Mug",
+        details: ""
+    }];
+
     constructor() { }
 
-    addItem() {
-
+    getItems() {
+        return this.cartItems;
     }
 
-    removeItem() {
-
+    getItem(id: string, product: string, details: string) {
+        return this.cartItems.find(value => {
+            if (value.id == id && value.product == product && value.details == details) {
+                return true;
+            }
+        })
     }
 
-    increaseItem() {
-
+    addItem(id: string, product: string, details: string) {
+        let item = this.getItem(id, product, details);
+        if (item) {
+            this.increaseItem(id, product, details);
+        }
+        else {
+            this.cartItems.push({
+                id: id,
+                quantity: 1,
+                product: product,
+                details: details
+            })
+        }
     }
 
-    decreaseItem() {
-        
+    removeItem(id: string, product: string, details: string) : boolean {
+        let item = this.getItem(id, product, details);
+        if (item) {
+            delete this.cartItems[this.cartItems.indexOf(item)];
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
+
+    increaseItem(id: string, product: string, details: string) : boolean {
+        let item = this.getItem(id, product, details);
+        if (item) {
+            this.cartItems[this.cartItems.indexOf(item)].quantity++;
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
+
+    decreaseItem(id: string, product: string, details: string) : boolean {
+        let item = this.getItem(id, product, details);
+        if (item) {
+            this.cartItems[this.cartItems.indexOf(item)].quantity--;
+            return true;
+        }
+        else {
+            return false;
+        }        
     }
 }
