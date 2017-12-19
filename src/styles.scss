@@ -19,10 +19,16 @@ app-searchbar {
     width: 100%;
     z-index: 500;
 }
-
+a:hover{
+    color: rgb(224, 101, 0)
+}
 app-faq .card {
-    background-color: $light;
-    color: $dark;
+    background-color: $dark;
+    color: $light;
+} 
+app-about .card {
+    background-color: $dark;
+    color: $light;
 }
 
 .img-preview, .img-thumbnail {
