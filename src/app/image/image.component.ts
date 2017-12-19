@@ -7,12 +7,13 @@ import { ImageService } from '../../services/image/image.service';
 import { ActivatedRoute } from '@angular/router';
 import 'rxjs/add/operator/filter';
 import { CartService } from '../../services/cart/cart.service';
+import { NotificationService } from '../../services/notification/notification.service';
 
 @Component({
   selector: 'app-image',
   templateUrl: './image.component.html',
   styleUrls: ['./image.component.scss'],
-  providers: [ImageService, CartService]
+  providers: [ImageService, CartService, NotificationService]
 })
 export class ImageComponent implements OnInit {
   image: SearchImage;
@@ -33,7 +34,7 @@ export class ImageComponent implements OnInit {
   }
   activeSrc = "";
   get resolutions() { return Resolutions.All; }
-  constructor(private imageService: ImageService, private route: ActivatedRoute) { }
+  constructor(private imageService: ImageService, private route: ActivatedRoute, private notifications: NotificationService) { }
 
   ngOnInit() {
     this.GetImage();
@@ -60,7 +61,10 @@ export class ImageComponent implements OnInit {
   }
 
   AddToCart(id: string, product: string, details: string) {
-    CartService.addItem(id, product, details);
+    let success: boolean = CartService.addItem(id, product, details);
+    if (success) {
+      this.notifications.showSuccess("Success", this.image.name + " - " + product + " " + details + " was added to cart");
+    }
   }
 
   ChangePreview(event) {

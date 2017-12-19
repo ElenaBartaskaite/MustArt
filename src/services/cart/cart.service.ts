@@ -49,10 +49,11 @@ export class CartService {
         })
     }
 
-    static addItem(id: string, product: string, details: string) {
+    static addItem(id: string, product: string, details: string) : boolean {
         let item = this.getItem(id, product, details);
         if (item) {
             this.increaseItem(id, product, details);
+            return true;
         }
         else {
             this.cartItems.push({
@@ -60,7 +61,8 @@ export class CartService {
                 quantity: 1,
                 product: product,
                 details: details
-            })
+            });
+            return true;
         }
     }
 
