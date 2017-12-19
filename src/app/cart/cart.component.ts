@@ -1,20 +1,22 @@
 import { Component, OnInit } from '@angular/core';
 import { CartService } from '../../services/cart/cart.service';
+import { ImageService } from '../../services/image/image.service';
 
 @Component({
   selector: 'app-cart',
   templateUrl: './cart.component.html',
   styleUrls: ['./cart.component.scss'],
   providers: [
-    CartService
+    CartService,ImageService
   ]
 })
 export class CartComponent implements OnInit {
 
   cartItems: any[];
+  
 
   constructor(
-    private cartService: CartService
+    private imageService: ImageService
   ) {
   }
 
