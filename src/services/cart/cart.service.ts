@@ -8,12 +8,32 @@ export class CartService {
         quantity: number,
         product: string,
         details: string
-    }] = [{
-        id: "1",
-        quantity: 1,
-        product: "Mug",
-        details: ""
-    }];
+    }] = [
+        {
+            id: "1",
+            quantity: 1,
+            product: "Mug",
+            details: ""
+        },
+        {
+            id: "2",
+            quantity: 1,
+            product: "Tshirt",
+            details: "M"
+        },
+        {
+            id: "2",
+            quantity: 2,
+            product: "Tshirt",
+            details: "L"
+        },
+        {
+            id: "2",
+            quantity: 2,
+            product: "Mug",
+            details: ""
+        },
+        ];
 
     constructor() { }
 
@@ -44,7 +64,7 @@ export class CartService {
         }
     }
 
-    removeItem(id: string, product: string, details: string) : boolean {
+    removeItem(id: string, product: string, details: string): boolean {
         let item = this.getItem(id, product, details);
         if (item) {
             delete this.cartItems[this.cartItems.indexOf(item)];
@@ -55,7 +75,7 @@ export class CartService {
         }
     }
 
-    increaseItem(id: string, product: string, details: string) : boolean {
+    increaseItem(id: string, product: string, details: string): boolean {
         let item = this.getItem(id, product, details);
         if (item) {
             this.cartItems[this.cartItems.indexOf(item)].quantity++;
@@ -66,14 +86,17 @@ export class CartService {
         }
     }
 
-    decreaseItem(id: string, product: string, details: string) : boolean {
+    decreaseItem(id: string, product: string, details: string): boolean {
         let item = this.getItem(id, product, details);
         if (item) {
             this.cartItems[this.cartItems.indexOf(item)].quantity--;
+            if (this.cartItems[this.cartItems.indexOf(item)].quantity == 0) {
+                this.removeItem(id, product, details);
+            }
             return true;
         }
         else {
             return false;
-        }        
+        }
     }
 }
