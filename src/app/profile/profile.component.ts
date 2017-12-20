@@ -50,25 +50,28 @@ export class ProfileComponent implements OnInit {
 
   RemoveTag(event) {
     console.log(event);
-    
+
     event.target.parentElement.hidden = true;
   }
 
-  ChangeEmail(){
+  ChangeEmail() {
     console.log(document.getElementById('emailAddressInput'));
     this.emailAddress = (<any>document.getElementById('emailAddressInput')).value;
     (<any>document.getElementById('emailAddressInput')).value = "";
   }
 
   ChangePassword() {
-    if (this.newPassword != this.repeatPassword) {
+    if (this.currentPassword.trim() == "" || this.newPassword.trim() == "" || this.repeatPassword.trim() == "") {
+      this.notifications.showError("Error", "Please fill in all 3 password fields.");
+    }
+    else if (this.newPassword != this.repeatPassword) {
       this.notifications.showError("Error", "Passwords don't match. But colors do!");
     }
-    else if (this.currentPassword.trim() != "" && this.newPassword.trim() != "" && this.repeatPassword.trim() != "") {
-      this.notifications.showSuccess("Success", "Password was successfully changed.");
-    }
     else {
-      this.notifications.showError("Error", "Please fill in all 3 password fields.");
+      this.currentPassword = "";
+      this.newPassword = "";
+      this.repeatPassword = "";
+      this.notifications.showSuccess("Success", "Password was successfully changed.");
     }
   }
 

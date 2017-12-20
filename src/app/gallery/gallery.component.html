@@ -108,19 +108,20 @@
   </div>
   <div class="row card oops-card" *ngIf="ss.searchImages.length < 1">
     <div class="card-body col-md-12 justify-content-center totally-centered">
-      <h1>
-        Oops!</h1>
-      <h2>
-        It seems there's nothing here...</h2>
-      <div class="error-details">
-        No results were found for your search query, but we got you covered:
-      </div>
-      <div class="error-actions">
-        <a href="/" class="btn btn-warning btn-lg">
-          <span class="glyphicon glyphicon-home"></span>
-          Take me home </a>
-        <a href="/gallery?tags=b" class="btn btn-warning btn-lg">
-          <span class="glyphicon glyphicon-envelope"></span> Popular tags </a>
+      <div class="error-template">
+        <h1>
+          Oops!</h1>
+        <h2>
+          It seems there's nothing here...</h2>
+        <div class="error-details">
+          No results were found for your search query, but we got you covered:
+        </div>
+        <div class="error-actions">
+          <a href="/" class="btn btn-warning btn-lg">
+            Take me home </a>
+          <a href="/gallery?tags=b" class="btn btn-warning btn-lg">
+            Popular tags </a>
+        </div>
       </div>
     </div>
   </div>
