@@ -10,7 +10,8 @@
 '~bootstrap/scss/reboot',
 '~bootstrap/scss/type',
 '~bootstrap/scss/badge',
-'~bootstrap/scss/buttons';
+'~bootstrap/scss/buttons',
+'~bootstrap/scss/forms';
 @import "~ngx-toastr/toastr-bs4-alert";
 
 app-searchbar {
@@ -59,6 +60,7 @@ h1, h2 {
 
 .ngx-datepicker-input {
     width: 120px !important;
+    @extend .form-control;
 }
 
 .main {
@@ -90,7 +92,7 @@ a, .color-picker-box, button{
 }
 
 .color-picker-box {
-    width: 30px;
+    width: 38px !important;
 }
 
 .cp-ok-button-class, .cp-cancel-button-class {
