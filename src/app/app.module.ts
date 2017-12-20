@@ -34,6 +34,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { ToastrModule } from 'ngx-toastr';
 import { UploadComponent } from './upload/upload.component';
+import { ColorPickerModule } from 'ngx-color-picker';
 
 const appRoutes: Routes = [
   { path: '', redirectTo: 'gallery', pathMatch: 'full' },
@@ -70,8 +71,16 @@ const appRoutes: Routes = [
     NavbarModule,
     SearchbarModule,
     FormsModule,
+    ColorPickerModule,
     BrowserAnimationsModule, // required animations module
-    ToastrModule.forRoot(), // ToastrModule added
+    ToastrModule.forRoot({
+      maxOpened: 1,
+      preventDuplicates: false,
+      autoDismiss: true
+    }), // ToastrModule added
+  ],
+  exports: [
+    ColorPickerModule
   ],
   providers: [
     ImageService,

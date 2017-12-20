@@ -1,10 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { SearchService } from '../../services/search/search.service';
+import { NotificationService } from '../../services/notification/notification.service';
 
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
-  styleUrls: ['./profile.component.scss']
+  styleUrls: ['./profile.component.scss'],
+  providers: [NotificationService]
 })
 export class ProfileComponent implements OnInit {
 
@@ -13,8 +15,13 @@ export class ProfileComponent implements OnInit {
   emailAddressInput: string = "";
   subscriptions: string[] = ["nature", "math", "trees"];
 
+  currentPassword: string = "";
+  newPassword: string = "";
+  repeatPassword: string = "";
+
   constructor(
-    private searchService: SearchService
+    private searchService: SearchService,
+    private notifications: NotificationService
   ) { }
 
   ngOnInit() {
@@ -43,13 +50,26 @@ export class ProfileComponent implements OnInit {
 
   RemoveTag(event) {
     console.log(event);
+    
     event.target.parentElement.hidden = true;
   }
 
   ChangeEmail(){
     console.log(document.getElementById('emailAddressInput'));
-    this.emailAddress = document.getElementById('emailAddressInput').value;
-    document.getElementById('emailAddressInput').value = "";
+    this.emailAddress = (<any>document.getElementById('emailAddressInput')).value;
+    (<any>document.getElementById('emailAddressInput')).value = "";
+  }
+
+  ChangePassword() {
+    if (this.newPassword != this.repeatPassword) {
+      this.notifications.showError("Error", "Passwords don't match. But colors do!");
+    }
+    else if (this.currentPassword.trim() != "" && this.newPassword.trim() != "" && this.repeatPassword.trim() != "") {
+      this.notifications.showSuccess("Success", "Password was successfully changed.");
+    }
+    else {
+      this.notifications.showError("Error", "Please fill in all 3 password fields.");
+    }
   }
 
 }

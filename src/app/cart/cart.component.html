@@ -4,9 +4,9 @@
       <div class="col-md-9">
         <div *ngFor="let item of cartItems">
           <div class="form-group form-inline">
-            <div class="col-md-2">
+            <a class="col-md-2">
               <img src='assets/images/{{item.id}}.png' alt="{{item.id}}">
-            </div>
+            </a>
             <div class="col-md-4">
               <h4>{{imageService.getImageById(item.id).name}}</h4>
               <p>{{item.product}}
@@ -15,7 +15,7 @@
               <h5><span *ngIf="item.quantity > 1">{{item.quantity}} x </span>{{getPrice(item)}}€</h5>
             </div>
             <div class="col-md-2">
-                <input class="form-control" type="number" name="quantity" value="{{item.quantity}}" min="1" style="width:100%">
+                <input class="form-control" type="number" name="quantity" [(value)]="item.quantity" min="1" style="width:100%">
             </div>
             <div class="col-md-3">
               <button type="button" class="btn btn-warning btn-block btn-lg" (click)="Remove(item)">Remove</button>
@@ -35,7 +35,7 @@
           <option>Office</option>
         </select>
         <h5>Total: {{GetTotal()}}€</h5>
-        <button type="button" class="btn btn-lg btn-warning btn-block">Purchase</button>
+        <button type="button" class="btn btn-lg btn-warning btn-block" (click)="purchase()">Purchase</button>
       </div>
     </div>
   </div>

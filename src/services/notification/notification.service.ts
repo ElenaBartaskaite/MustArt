@@ -9,7 +9,7 @@ export class NotificationService {
     closeButton: true,
     timeOut: 1500,
     progressBar: true,
-    positionClass: 'toast-bottom-right'
+    positionClass: 'toast-bottom-full-width'
   }
 
   constructor(private toastr: ToastrService) { }

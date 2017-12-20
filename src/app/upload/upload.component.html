@@ -5,7 +5,7 @@
       <div class="row">
         <div class="col-md-3">
           <div class="row">
-            <a class="col-md-12">
+            <a class="col-md-12" target="_blank" href="assets/images/1.png">
               <img src='assets/images/1.png' alt="Image to upload">
             </a>
             <label class="custom-file col-md-12">
@@ -14,7 +14,67 @@
             </label>
           </div>
         </div>
+        <div class="col-md-9">
+          <form class="form">
+            <div class="form-group row">
+              <div class="col-md-4 text-md-right col-filter-label align-middle">
+                Title
+              </div>
+              <input class="form-control col-md-8" name="title" type="text" />
+            </div>
+            <div class="form-group row">
+              <div class="col-md-4 text-md-right">
+                Description
+              </div>
+              <textarea class="form-control col-md-8" id="description" rows="3"></textarea>
+            </div>
+            <div class="form-group row">
+              <div class="col-md-4 text-md-right col-filter-label align-middle">
+                Tags
+              </div>
+              <input class="form-control col-md-6" name="tagToAdd" [(ngModel)]="tagToAdd" type="text" />
+              <div class="col-md-2 col-filter-input-right">
+                <button type="button" class="btn btn-lg btn-warning btn-block" (click)="AddTag()">Add</button>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-4">
+              </div>
+              <div class="col-md-6">
+                <span class="badge badge-secondary text-white image-card-tag" *ngFor="let tag of tags">
+                  <a (click)="GoToTag(tag)">{{tag}}</a>
+                  <button class="badge badge-light" (click)="RemoveTag($event)">X</button>
+                </span>
+              </div>
+            </div>
+            <div class="form-group row">
+              <div class="col-md-4 text-md-right">
+                Matching colors
+              </div>
+              <input style="color: transparent" class="color-picker-box form-control col-md-6" name="matchingColor" [(ngModel)]="matchingColor"
+                [(colorPicker)]="matchingColor" [style.background]="matchingColor" [cpPosition]="'bottom'" [cpPositionOffset]="'50%'"
+                [cpPositionRelativeToArrow]="true" [value]="matchingColor" />
+              <div class="col-md-2 col-filter-input-right">
+                <button type="button" class="btn btn-lg btn-warning btn-block" (click)="AddColor()">Add</button>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-4">
+              </div>
+              <div class="col-md-6">
+                <a class="badge image-card-tag" *ngFor="let color of colors" [style.background-color]="color.hex" [style.color]="color.hex"
+                  (click)="RemoveColor($event)">X</a>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-4">
+              </div>
+              <div class="col-md-8">
+                <button type="button" class="btn btn-lg btn-warning btn-block">Submit</button>
+              </div>
+            </div>
+          </form>
+        </div>
       </div>
     </div>
   </div>
-</div>
